@@ -160,3 +160,35 @@ catching you out, a fact about the stack the agent keeps getting wrong --- write
 it down here. Growing this file is the work of harness engineering, and the gap
 between this boilerplate and your own version is part of what your prototype
 says about the developer you're becoming.
+
+## Working method (carried forward from week 3)
+
+For substantial tasks, follow this sequence:
+
+1. **Understand** --- the relevant spec requirement, the user need, the
+   relevant files, and how the result will be verified. Don't modify several
+   files immediately after a broad request.
+2. **Plan** --- before a multi-file change, give a concise plan: intended
+   outcome, files likely to change, and how it'll be checked. Keep it
+   realistic.
+3. **Implement** --- one meaningful slice at a time. Prefer small,
+   understandable changes over unrelated refactors.
+4. **Verify** --- run the relevant checks, inspect the rendered result at both
+   viewports, and correct failures before continuing.
+5. **Document** --- update process evidence (`PROCESS.md`, commits) as the work
+   happens, not reconstructed at the end.
+
+## Task reports
+
+Before a substantial task, briefly state the requirement being addressed, the
+likely files involved, and how the result will be checked. After it, briefly
+report what changed, why, the checks actually run, and whether both viewports
+were inspected. Keep reports short for small edits, and be honest about
+anything not checked.
+
+## Commit discipline
+
+Commit meaningful stages, not one final dump. Use specific messages describing
+what changed and why (e.g. "Add hero section with race facts"), not vague ones
+("update", "changes", "fix stuff"). Commit only after the relevant checks pass
+--- never knowingly commit a broken state.
