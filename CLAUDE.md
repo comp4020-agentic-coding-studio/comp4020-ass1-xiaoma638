@@ -192,3 +192,57 @@ Commit meaningful stages, not one final dump. Use specific messages describing
 what changed and why (e.g. "Add hero section with race facts"), not vague ones
 ("update", "changes", "fix stuff"). Commit only after the relevant checks pass
 --- never knowingly commit a broken state.
+
+## Carried forward from Assignment 1
+
+Each of these came from something that actually went wrong building the
+solar-distance prototype. They're written down so the same failure costs less
+the second time.
+
+- **Propose the commit; don't wait to be asked.** The rule above already said
+  "not one final dump", and Assignment 1 was still written across a week and
+  committed the day before it was due --- a rule nobody acts on is not a
+  harness. So: whenever `pnpm check` goes red to green, or a task finishes,
+  stop and offer a commit with a specific message before starting the next
+  thing.
+
+- **Green checks are not a rendered page.** Nothing in the roster looks at
+  layout. Every viewport bug this week --- the illusion's ring collapsing, the
+  labels colliding near dawn --- was invisible to `pnpm check` and obvious
+  within seconds at 390x844. Open both marking viewports before calling a
+  visual change done.
+
+- **Say whether a visual claim was seen or computed.** When `agent-browser`
+  isn't installed, geometry can still be worked out on paper --- but a
+  calculated result and an observed one are different kinds of evidence, and
+  reporting the first as if it were the second is how a confident wrong fix
+  ships. Name which one it is, every time.
+
+- **A component positioned internally in px owns its own box size.** The
+  Ebbinghaus figure placed every ring dot absolutely, in px, against a 146px
+  cluster; a breakpoint then narrowed the cluster to 132px. The dots didn't
+  move with it, so the ring collapsed onto the centre disc and the illusion
+  stopped demonstrating anything --- with every check still green, because
+  nothing measures whether a figure still means what it claims. If a breakpoint
+  needs a component smaller, scale it rather than resize it, and when a scale
+  is mirrored in a custom property other elements derive from, change both or
+  neither.
+
+- **A passing local build says nothing about the deployed site.** `public/` sat
+  untracked through the whole build: `pnpm build` passed because the files were
+  on disk, and the deploy would have lost every clip and the globe texture.
+  After adding an asset, confirm it's tracked, and prefer formats the marking
+  browser is guaranteed to accept --- the clips were `.mov`, which Pages serves
+  as `video/quicktime` and Chrome is under no obligation to play. Declare the
+  type explicitly rather than leaving the browser to sniff it.
+
+- **Check an asset's real dimensions against the size it renders at.** The two
+  clips were 2940px wide and displayed at about 500px: 41MB of video that could
+  never reach the screen, on a page whose argument depends on the reader
+  actually watching them.
+
+- **The stated idea and the built artefact have to agree.** `PROCESS.md`
+  claimed the page celebrated the children's curiosity while the page itself
+  ended on Confucius's restraint. A marker reads the claim first and then looks
+  for it, so read the two against each other before shipping and fix whichever
+  one is wrong.
