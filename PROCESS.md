@@ -1,83 +1,104 @@
 # Process overview
 
-<!-- TEMPLATE: this file is a shape to fill in, not a form. Replace everything
-     in it with your own overview, and delete this comment — `pnpm
-     check:evidence` will remind you if it's still here. -->
+<!-- TODO(you): 400–600 words, three or four moments. Delete every TODO comment
+     and every bracketed prompt before you ship — what's left should read as
+     your own prose, with no scaffolding showing.
 
-A reading-guide to how the work came together --- a map to your process, not an
-essay about it. Markers read this file and follow its citations; they don't
-trawl the repo for evidence you didn't point at, so if a moment mattered, cite
-it.
-
-This file is the shape; the course site's
-[assessment page](https://comp.anu.edu.au/courses/comp4020-agentic-coding-studio/topics/assessment/#what-you-submit)
-is the requirement, and each brief adds its own word count and moment count.
+     Read this before writing: the marks are in two of the four jobs a moment
+     does — "what you did instead of the obvious thing" and "how you knew it
+     was right". The repo can show what changed; it cannot show either of
+     those, which is why they're where the marginal marks sit. And the brief
+     says the strongest moments are the ones where a correction landed in the
+     harness (a rule added to CLAUDE.md, a check wired up, an attempt thrown
+     away) rather than in a retry. -->
 
 ## What I built
 
-One paragraph: the thing, and the idea behind it.
+<!-- TODO(you): One paragraph — the thing, and the idea behind it. The raw
+     material is here; write it in your own voice rather than editing this in
+     place:
+
+     An answer to the Liezi story 《两小儿辩日》, where two children argue
+     whether the sun is closer at sunrise or at noon and Confucius can't
+     settle it. The page settles it, but only after making the reader distrust
+     their own eyes: an Ebbinghaus figure with a reveal, then two clips of the
+     same sun, then two instruments they drag — the rotation one, where
+     turning toward local noon gains ground on the sun, and the orbit one,
+     where eccentricity pulls the other way — and finally a verdict panel that
+     takes their date, latitude and morning hour and separates the two
+     contributions instead of reporting one net number.
+
+     Say what the *point of view* is. The brief wants one strong idea and
+     nothing else; name yours in a sentence. -->
 
 ## The moments that mattered
 
-Three or four for an assignment; fewer is fine for a weekly prototype. Keep the
-list short so each moment has room to do all four jobs:
+<!-- TODO(you): Three or four. Each needs all four jobs: what happened, what
+     you did instead of the obvious thing, how you knew it was right, and the
+     citation. Citation format is link text = the hash or range, target = the
+     GitHub commit or compare URL — the two below are wired up and resolve, so
+     copy their shape.
 
-1. **what happened** --- the problem, or the thing the agent got wrong
-2. **what you did instead of the obvious thing** --- the call you made, and why
-   it beat the obvious one
-3. **how you knew it was right** --- the check you ran, the viewport you looked
-   at, what you read before accepting the diff
-4. **the citation** --- a commit or commit range, a `CLAUDE.md` change, a check
-   that went from red to green, a prompt paired with the commit it produced
+     A candidate worth considering, if it's true for you: the geometry in
+     `updateRotationVisual` derives the rays, the terminator, the observer's
+     meridian and Δx from one angle rather than positioning each by eye. The
+     obvious thing is to nudge each element until the frame looks right; the
+     non-obvious thing is to make them share a source so they *can't*
+     disagree. If that's what happened, the "how you knew" is the spec test
+     asserting the two contributions sum to the reported total, plus what you
+     saw at 390×844.
 
-Jobs 2 and 3 are the ones the repo can't tell a reader on its own, so they're
-where the marks are. The strongest moments are the ones where a correction
-landed in the **harness** rather than in another prompt --- a rule added to
-`CLAUDE.md`, a check wired up, an attempt thrown away: re-prompting until it
-passes is the routine case, and changing what the agent works against is the
-skilled one.
+     Another, if it's true: the label collision at the phone viewport that the
+     comments in `updateRotationVisual` describe — labels pinned to the far end
+     of a stub landing on top of the observer near dawn. Fixing that in pixels
+     rather than percentages is a judgement about *why* it broke, and the check
+     is the 390×844 viewport itself.
 
-Cite each moment as a link whose text is the commit hash or range and whose
-target is this repo's commit or compare URL, so a reader clicks straight to the
-evidence:
+     Be honest in these. A moment the history doesn't corroborate scores worse
+     than a smaller moment it does. -->
 
-- one commit: [`a1b2c3d`](https://github.com/YOUR-ORG/YOUR-REPO/commit/a1b2c3d)
-- a range:
-  [`a1b2c3d...e4f5a6b`](https://github.com/YOUR-ORG/YOUR-REPO/compare/a1b2c3d...e4f5a6b)
+### 1. <!-- TODO(you): name the moment -->
 
-To pair a prompt with the commit it produced, quote the prompt (curated, not a
-full transcript) next to the citation:
+<!-- TODO(you): what happened / what you did instead / how you knew / cite it -->
 
-> the prompt, verbatim
+Cited: [`6e9c936`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass1-xiaoma638/commit/6e9c936)
 
-Screenshots are welcome where one carries the verification better than a
-sentence does. Commit the file to this repo and link it with a **relative**
-path, which is what makes it render on GitHub: `![alt text](docs/before.png)`.
-Images don't count towards the word count and don't replace the citation.
+### 2. <!-- TODO(you): name the moment -->
 
-### A worked moment, for shape
+<!-- TODO(you): what happened / what you did instead / how you knew / cite it -->
 
-Delete this section along with the rest of the boilerplate --- it's here to show
-the four jobs in one paragraph, not to be imitated in content.
+Cited: [`f4ae7dd`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass1-xiaoma638/commit/f4ae7dd)
 
-> The date formatter kept coming back with `toLocaleDateString()` and no locale
-> argument, so the same build rendered differently on my machine and in CI. I'd
-> already re-prompted it twice, which fixed the line but not the habit, so the
-> third time I put the rule in `CLAUDE.md` instead
-> ([`3f9ac21`](https://github.com/YOUR-ORG/YOUR-REPO/commit/3f9ac21)) and added
-> a spec test that fails on a bare `toLocaleDateString`. That's what told me it
-> had actually taken: the test went red against the old code and green against
-> the new, and the next two features it wrote passed it without prompting
-> ([`3f9ac21...b7e0d14`](https://github.com/YOUR-ORG/YOUR-REPO/compare/3f9ac21...b7e0d14)).
+### 3. <!-- TODO(you): name the moment -->
 
-## Before you ship
+<!-- TODO(you): what happened / what you did instead / how you knew / cite it -->
 
-`pnpm check:evidence` verifies your citations resolve to real commits, that the
-current reflection entry is in `reflections/`, and that your `CLAUDE.md` is
-there --- before a marker ever opens the file. It checks that your map is
-traceable, not that it is good: the marker judges whether your small,
-deliberately chosen set of moments shows real judgement and reflection. A green
-check is not a substitute for that curation.
+## A note on this history
 
-Images are deliberately not checked, because whether one renders is visible the
-moment you look. Open this file on GitHub and look at it before you ship.
+<!-- TODO(you): READ THIS, THEN DECIDE WHAT TO DO WITH IT.
+
+     Your prototype was written across the week but committed in four commits
+     on 16 August, the day before the deadline. Your CLAUDE.md tells you to
+     "commit meaningful stages, not one final dump", and the assessment page
+     says a trail that grew alongside the code is the strongest evidence and a
+     dump the night before is the weakest. That gap is real and a marker will
+     see it in the timestamps.
+
+     Two honest options, and only these two:
+
+     1. Say so, in one sentence, without excuses — and let the moments above
+        carry the evidence instead. A short, accurate acknowledgement costs
+        less than a marker discovering it themselves.
+     2. Delete this section and say nothing. The timestamps still show it.
+
+     What you must NOT do is write moments that imply an incremental history
+     that isn't there. Uncited claims don't count; contradicted ones are worse
+     — the bottom band is "a record that contradicts" the account.
+
+     Nothing can retroactively create the trail. What you can still control is
+     whether the account of it is truthful. -->
+
+---
+
+<!-- Harness carried forward from week 3: 45f22f2 -->
+<!-- https://github.com/comp4020-agentic-coding-studio/comp4020-ass1-xiaoma638/commit/45f22f2 -->
