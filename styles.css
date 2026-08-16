@@ -2584,9 +2584,13 @@ footer p {
     gap: 0;
   }
 
-  .illusion-cluster {
-    width: 132px;
-  }
+  /* Don't narrow .illusion-cluster here. Every ring dot is absolutely
+     positioned in px against a 146px box — the hexagon comment above quotes
+     its centre as 73px — so shrinking the box moves the centre without moving
+     the dots, and the ring collapses inward onto the centre disc instead of
+     scaling with it. The phone size comes from the scale() on
+     .illusion-study .illusion-cluster, which carries the whole geometry with
+     it and is mirrored in --disc-scale so the guide lines stay tangent. */
 
   .horizon-reference {
     height: 195px;
