@@ -86,7 +86,7 @@ input {
 .opening,
 .layer,
 .verdict-section,
-.sources {
+.coda {
   padding: 88px max(24px, calc((100vw - 1160px) / 2));
 }
 
@@ -2268,43 +2268,48 @@ input[type="date"] {
   font-size: 12px;
 }
 
-.sources {
-  padding-top: 56px;
-  padding-bottom: 56px;
-  background: #dfe8e4;
-}
-
-.sources h2 {
-  margin-bottom: 12px;
-  font-size: 24px;
-}
-
-.sources p,
-.sources li {
-  max-width: 780px;
-  color: #526070;
-}
-
-.sources ul {
-  margin: 18px 0 0;
-  padding-left: 20px;
-}
-
-.sources a {
-  color: #6f3527;
-}
-
-footer {
-  padding: 20px 24px;
-  background: #18293e;
-  color: #c6d3d2;
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 12px;
+/* The closing thought. It follows the verdict, which is already dark, so it
+   goes one shade deeper rather than flashing back to light — the page settles
+   instead of restarting. No heading and no link: this is the page speaking in
+   its own voice, not another labelled section. */
+.coda {
+  padding-top: 92px;
+  padding-bottom: 104px;
+  color: #edf2ec;
+  background: #0e1d30;
   text-align: center;
 }
 
-footer p {
-  margin: 0;
+/* A short rule where a heading would go. The coda needs a lid, not a label. */
+.coda::before {
+  display: block;
+  width: 56px;
+  height: 1px;
+  margin: 0 auto 42px;
+  background: rgb(237 242 236 / 26%);
+  content: "";
+}
+
+.coda p {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* The sentence turns on "but", so the type turns with it: the concession is
+   set quiet and italic, the reversal gets the size. Reading the two weights is
+   the argument. */
+.coda-concession {
+  display: block;
+  margin-bottom: 18px;
+  color: rgb(237 242 236 / 56%);
+  font-size: 18px;
+  font-style: italic;
+}
+
+.coda-turn {
+  display: block;
+  font-size: 31px;
+  line-height: 1.42;
 }
 
 @media (width <= 820px) {
@@ -2328,7 +2333,7 @@ footer p {
   .clues-section,
   .video-comparison-section,
   .heat-section,
-  .sources {
+  .coda {
     padding: 64px 24px;
   }
 
@@ -2414,7 +2419,7 @@ footer p {
   .clues-section,
   .video-comparison-section,
   .heat-section,
-  .sources {
+  .coda {
     padding: 52px 18px;
   }
 
@@ -2424,6 +2429,18 @@ footer p {
 
   h2 {
     font-size: 27px;
+  }
+
+  .coda::before {
+    margin-bottom: 32px;
+  }
+
+  .coda-concession {
+    font-size: 16px;
+  }
+
+  .coda-turn {
+    font-size: 23px;
   }
 
   .lead,
