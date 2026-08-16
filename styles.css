@@ -1,16 +1,2803 @@
-body {
-  margin: 0;
-  padding: 2rem;
-  font-family: system-ui, sans-serif;
-  line-height: 1.6;
-  color: #1a1a1a;
+/* The component rules intentionally follow the narrative order of the page. */
+/* stylelint-disable no-descending-specificity */
+
+:root {
+  color: #172131;
+  background: #f6f7f5;
+  font-family: Georgia, "Times New Roman", serif;
+  font-synthesis: none;
 }
 
-main {
-  max-width: 40rem;
-  margin: 0 auto;
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #f6f7f5;
+  line-height: 1.65;
 }
 
 a {
-  color: #0b5fff;
+  color: inherit;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.site-header {
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  border-bottom: 1px solid #d4d8d7;
+  background: rgb(246 247 245 / 94%);
+  backdrop-filter: blur(10px);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(1160px, calc(100% - 48px));
+  min-height: 64px;
+  margin: 0 auto;
+  gap: 24px;
+}
+
+.wordmark {
+  color: #9b3d2d;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+.wordmark span {
+  margin-left: 8px;
+  color: #526070;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 14px;
+}
+
+.nav-links a {
+  text-decoration: none;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  color: #9b3d2d;
+}
+
+.opening,
+.layer,
+.verdict-section,
+.sources {
+  padding: 88px max(24px, calc((100vw - 1160px) / 2));
+}
+
+.opening {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(440px, 1.05fr);
+  min-height: 650px;
+  align-items: center;
+  gap: 68px;
+  overflow: hidden;
+  border-bottom: 1px solid #d4d8d7;
+}
+
+.opening-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow,
+.control-kicker,
+.instrument-head p,
+.verdict-label {
+  margin: 0 0 12px;
+  color: #9b3d2d;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2 {
+  color: #111b2a;
+  line-height: 1.18;
+}
+
+h1 {
+  max-width: 640px;
+  margin-bottom: 22px;
+  font-size: 54px;
+  font-weight: 800;
+}
+
+h2 {
+  max-width: 760px;
+  margin-bottom: 18px;
+  font-size: 36px;
+  font-weight: 800;
+}
+
+.lead,
+.section-heading > p:last-child {
+  max-width: 650px;
+  margin-bottom: 0;
+  color: #526070;
+  font-size: 18px;
+}
+
+.opening-prompt {
+  max-width: 610px;
+  margin: 30px 0 24px;
+  padding-left: 14px;
+  border-left: 3px solid #d29a45;
+  color: #405b64;
+}
+
+.start-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #9b3d2d;
+  color: #9b3d2d;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.dialogue-stage {
+  position: relative;
+  min-height: 600px;
+  border: 1px solid #9a8461;
+  background: #d9ccb0;
+  overflow: hidden;
+}
+
+.rotation-visual::before,
+.orbit-visual::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: radial-gradient(#d9e2e6 0.8px, transparent 0.9px);
+  background-size: 31px 31px;
+  content: "";
+  opacity: 0.3;
+}
+
+.dialogue-stage::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: radial-gradient(#7f7058 0.7px, transparent 0.8px);
+  background-size: 25px 25px;
+  content: "";
+  opacity: 0.2;
+}
+
+.dialogue-stage::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 28%;
+  border-top: 1px solid #786f58;
+  background: #79806a;
+  content: "";
+}
+
+.stage-caption,
+.stage-question {
+  position: absolute;
+  z-index: 4;
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.stage-caption {
+  top: 24px;
+  left: 24px;
+  padding-left: 12px;
+  border-left: 3px solid #a94931;
+  color: #4c4336;
+  font-size: 13px;
+}
+
+.dialogue-sun {
+  position: absolute;
+  z-index: 2;
+  top: 12%;
+  left: 50%;
+  width: 72px;
+  aspect-ratio: 1;
+  border: 5px solid #bd7341;
+  border-radius: 50%;
+  background: #b44c32;
+  box-shadow: 0 0 0 7px rgb(180 76 50 / 14%);
+  transform: translateX(-50%);
+}
+
+.debater {
+  position: absolute;
+  z-index: 3;
+  bottom: 10%;
+  width: 46%;
+  height: 75%;
+}
+
+.debater-a {
+  left: 4%;
+}
+
+.debater-b {
+  right: 4%;
+}
+
+.person {
+  position: absolute;
+  bottom: 0;
+  width: 138px;
+  height: 252px;
+}
+
+.person-a {
+  left: 12%;
+}
+
+.person-b {
+  right: 12%;
+}
+
+.person-head {
+  position: absolute;
+  z-index: 2;
+  top: 18px;
+  left: 39px;
+  width: 60px;
+  aspect-ratio: 1;
+  border: 4px solid #7b5338;
+  border-radius: 50%;
+  background: #d1a274;
+}
+
+.person-head::before {
+  position: absolute;
+  top: -12px;
+  left: -9px;
+  width: 72px;
+  height: 28px;
+  border-radius: 50% 50% 18% 18%;
+  background: #322d28;
+  content: "";
+}
+
+.person-robe {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 138px;
+  height: 184px;
+  clip-path: polygon(32% 0, 68% 0, 100% 100%, 0 100%);
+}
+
+.person-robe::before,
+.person-robe::after {
+  position: absolute;
+  top: 25px;
+  width: 10px;
+  height: 105px;
+  border-radius: 8px;
+  background: #dca978;
+  content: "";
+}
+
+.person-robe::before {
+  left: 19px;
+  transform: rotate(24deg);
+}
+
+.person-robe::after {
+  right: 19px;
+  transform: rotate(-24deg);
+}
+
+.person-a .person-robe {
+  background: #66715e;
+}
+
+.person-b .person-robe {
+  background: #8d4b3b;
+}
+
+.speech {
+  position: absolute;
+  z-index: 5;
+  top: 2%;
+  max-width: 235px;
+  padding: 17px 18px;
+  border: 1px solid #a28e6d;
+  background: #f2e8d0;
+  color: #202d3b;
+  box-shadow: 6px 6px 0 rgb(82 61 41 / 20%);
+}
+
+.speech::after {
+  position: absolute;
+  bottom: -12px;
+  width: 20px;
+  height: 20px;
+  border-right: 1px solid #a28e6d;
+  border-bottom: 1px solid #a28e6d;
+  background: #f2e8d0;
+  content: "";
+  transform: rotate(45deg);
+}
+
+.speech-a {
+  left: 0;
+}
+
+.speech-a::after {
+  left: 44px;
+}
+
+.speech-b {
+  right: 0;
+}
+
+.speech-b::after {
+  right: 44px;
+}
+
+.speech p {
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.speaker {
+  color: #9b3d2d;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.speech strong {
+  color: #85412f;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 13px;
+}
+
+.stage-question {
+  right: 50%;
+  bottom: 24px;
+  color: #43392e;
+  font-size: 20px;
+  font-weight: 800;
+  transform: translateX(50%);
+}
+
+.master-section {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.8fr) minmax(0, 1.2fr);
+  align-items: center;
+  gap: 80px;
+  padding: 80px max(24px, calc((100vw - 1040px) / 2));
+  border-bottom: 1px solid #334a57;
+  background: #1a2c38;
+  color: #dce4d8;
+}
+
+.master-figure {
+  position: relative;
+  min-height: 360px;
+  overflow: hidden;
+}
+
+.master-figure::before {
+  position: absolute;
+  right: 0;
+  bottom: 12%;
+  left: 0;
+  height: 1px;
+  background: #75908b;
+  content: "";
+}
+
+.master-halo {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  width: 138px;
+  aspect-ratio: 1;
+  border: 1px solid #b5844c;
+  border-radius: 50%;
+  background: #c45a36;
+  opacity: 0.82;
+  transform: translateX(-50%);
+}
+
+.master-person {
+  position: absolute;
+  z-index: 2;
+  bottom: 12%;
+  left: 50%;
+  width: 210px;
+  height: 314px;
+  transform: translateX(-50%);
+}
+
+.master-head {
+  position: absolute;
+  z-index: 3;
+  top: 34px;
+  left: 75px;
+  width: 62px;
+  aspect-ratio: 1;
+  border: 4px solid #543b2a;
+  border-radius: 50%;
+  background: #bd8c63;
+}
+
+.master-hat {
+  position: absolute;
+  z-index: 4;
+  top: 7px;
+  left: 52px;
+  width: 108px;
+  height: 51px;
+  border: 3px solid #24313a;
+  border-radius: 50% 50% 12% 12%;
+  background: #27353d;
+}
+
+.master-hat::after {
+  position: absolute;
+  top: 8px;
+  left: 45px;
+  width: 14px;
+  height: 48px;
+  background: #27353d;
+  content: "";
+}
+
+.master-robe {
+  position: absolute;
+  bottom: 0;
+  left: 14px;
+  width: 182px;
+  height: 230px;
+  clip-path: polygon(34% 0, 66% 0, 100% 100%, 0 100%);
+  background: #526b67;
+}
+
+.master-robe::before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: #b2946b;
+  content: "";
+}
+
+.master-staff {
+  position: absolute;
+  z-index: 4;
+  right: 14px;
+  bottom: 0;
+  width: 8px;
+  height: 230px;
+  border-radius: 6px;
+  background: #5b3d2c;
+  transform: rotate(7deg);
+  transform-origin: bottom center;
+}
+
+.master-caption {
+  position: absolute;
+  z-index: 3;
+  bottom: 7%;
+  left: 16px;
+  color: #d8be81;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 14px;
+}
+
+.master-copy h2 {
+  color: #f4ebd9;
+}
+
+.master-copy > p:not(.eyebrow) {
+  max-width: 650px;
+  color: #c5d4ce;
+  font-size: 17px;
+}
+
+.master-copy .eyebrow {
+  color: #ddb567;
+}
+
+.master-quote {
+  margin-bottom: 18px;
+  color: #e7c87e !important;
+  font-size: 19px !important;
+  font-weight: 800;
+}
+
+.master-copy .start-link {
+  border-bottom-color: #ddb567;
+  color: #ddb567;
+}
+
+.clues-section {
+  display: grid;
+  align-content: center;
+  min-height: 760px;
+  padding: 88px max(24px, calc((100vw - 1160px) / 2));
+  border-bottom: 1px solid #d4d8d7;
+  background: #e7efeb;
+}
+
+.illusion-study {
+  display: grid;
+  justify-items: start;
+  min-height: 470px;
+  padding: 34px;
+  border: 1px solid #a8bbb6;
+  background: #f8faf7;
+}
+
+.illusion-study h3 {
+  margin: 0 0 20px;
+  color: #1b2c3a;
+  font-size: 28px;
+  line-height: 1.3;
+}
+
+.illusion-study .ebbinghaus {
+  --disc-scale: 1.35;
+
+  width: 100%;
+  min-height: 310px;
+  margin-bottom: 22px;
+  gap: 128px;
+}
+
+.illusion-study .illusion-cluster {
+  transform: scale(1.35);
+}
+
+.illusion-study > p:last-child {
+  max-width: 700px;
+  margin: 0;
+  color: #526570;
+  font-size: 16px;
+}
+
+.video-comparison-section {
+  padding: 88px max(24px, calc((100vw - 1160px) / 2));
+  border-bottom: 1px solid #d4d8d7;
+  background: #f7f6f0;
+}
+
+.video-comparison-section .section-heading {
+  margin-bottom: 32px;
+}
+
+.claim-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid #a8bbb6;
+  border-bottom: 1px solid #a8bbb6;
+}
+
+.claim {
+  padding: 30px 34px 32px;
+}
+
+.claim + .claim {
+  border-left: 1px solid #a8bbb6;
+}
+
+.claim-number {
+  margin-bottom: 11px;
+  color: #9b3d2d;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.claim h3 {
+  margin: 0 0 20px;
+  color: #1b2c3a;
+  font-size: 24px;
+  line-height: 1.3;
+}
+
+.claim > p:not(.claim-number, .claim-answer) {
+  margin-bottom: 16px;
+  color: #526570;
+  font-size: 15px;
+}
+
+.claim-answer {
+  margin: 20px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid #bccdc8;
+  color: #315869;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 14px;
+}
+
+.ebbinghaus {
+  /* Half the rendered diameter of .center-disc (34px), so the guide lines land
+     tangent to both discs. The clusters are scaled by a transform the lines
+     don't inherit, so --disc-scale must mirror .illusion-cluster's scale(). */
+  --disc-scale: 1;
+  --disc-radius: calc(17px * var(--disc-scale));
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  min-height: 218px;
+  margin-bottom: 16px;
+  border: 1px solid #c5d2cd;
+  background: #f5f8f4;
+}
+
+.illusion-cluster {
+  position: relative;
+  width: 146px;
+  aspect-ratio: 1;
+}
+
+.center-disc {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  width: 34px;
+  aspect-ratio: 1;
+  border: 2px solid #1d7384;
+  border-radius: 50%;
+  background: #59b7c6;
+  transform: translate(-50%, -50%);
+}
+
+.ring-dot {
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  background: #73807f;
+}
+
+.illusion-large .ring-dot {
+  width: 45px;
+  aspect-ratio: 1;
+}
+
+.illusion-small .ring-dot {
+  width: 19px;
+  aspect-ratio: 1;
+}
+
+.dot-1 {
+  top: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dot-2 {
+  top: 24px;
+  right: 9px;
+}
+
+.dot-3 {
+  right: 9px;
+  bottom: 24px;
+}
+
+.dot-4 {
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dot-5 {
+  bottom: 24px;
+  left: 9px;
+}
+
+.dot-6 {
+  top: 24px;
+  left: 9px;
+}
+
+/* A regular hexagon of radius 32px around the cluster's centre (73px), leaving
+   a 5.5px gap to the centre disc. Crowding the small dots inward is what makes
+   the centre read as larger — the illusion weakens as this ring widens. */
+.illusion-small .dot-1 {
+  top: 31.5px;
+}
+
+.illusion-small .dot-2 {
+  top: 47.5px;
+  right: 35.8px;
+}
+
+.illusion-small .dot-3 {
+  right: 35.8px;
+  bottom: 47.5px;
+}
+
+.illusion-small .dot-4 {
+  bottom: 31.5px;
+}
+
+.illusion-small .dot-5 {
+  bottom: 47.5px;
+  left: 35.8px;
+}
+
+.illusion-small .dot-6 {
+  top: 47.5px;
+  left: 35.8px;
+}
+
+/* Tangent guide lines: one grazing the top of both centre discs, one the
+   bottom. Because both discs share a centre line, equal diameters read as the
+   lines touching both — the comparison the surrounding rings disrupt. */
+.measure-line {
+  position: absolute;
+  z-index: 3;
+  right: 5%;
+  left: 5%;
+  height: 0;
+  border-top: 2px dashed #a64631;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.measure-line-top {
+  top: calc(50% - var(--disc-radius));
+}
+
+.measure-line-bottom {
+  top: calc(50% + var(--disc-radius));
+}
+
+.ebbinghaus.show-measure .measure-line {
+  opacity: 1;
+}
+
+.reveal-button {
+  margin: 0 0 18px;
+  border: 1px solid #8a5637;
+  border-radius: 3px;
+  background: #f2e7cf;
+  color: #713b2e;
+  padding: 9px 12px;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.reveal-button:hover,
+.reveal-button:focus-visible {
+  background: #e7d1a1;
+}
+
+.horizon-reference {
+  position: relative;
+  height: 218px;
+  margin-bottom: 22px;
+  border: 1px solid #b7c8c4;
+  background: #d7e7e0;
+  overflow: hidden;
+}
+
+.sunrise-evidence {
+  margin: 0 0 20px;
+  border: 1px solid #8c9d95;
+  background: #1f2c32;
+}
+
+.video-evidence-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  margin-bottom: 20px;
+}
+
+.video-evidence-pair .sunrise-evidence {
+  margin: 0;
+}
+
+.video-conclusion {
+  max-width: 760px;
+  margin: 26px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid #c6cfca;
+  color: #315869;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 15px;
+}
+
+.video-frame {
+  position: relative;
+}
+
+.sunrise-evidence video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0e1518;
+  object-fit: cover;
+}
+
+.video-source {
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  left: 10px;
+  border: 1px solid rgb(232 236 223 / 68%);
+  background: rgb(20 28 31 / 76%);
+  color: #f2f1e8;
+  padding: 4px 7px;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 11px;
+  line-height: 1.3;
+  pointer-events: none;
+}
+
+.sunrise-evidence figcaption {
+  padding: 9px 11px;
+  color: #d8e1db;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.reference-sun {
+  position: absolute;
+  z-index: 1;
+  width: 48px;
+  aspect-ratio: 1;
+  border: 3px solid #ebaf4a;
+  border-radius: 50%;
+  background: #d75d31;
+}
+
+.reference-sun-low {
+  bottom: 49px;
+  left: 20%;
+}
+
+.reference-sun-high {
+  top: 35px;
+  right: 20%;
+}
+
+.horizon-ground {
+  position: absolute;
+  right: 0;
+  bottom: 47px;
+  left: 0;
+  height: 2px;
+  background: #557661;
+}
+
+.building {
+  position: absolute;
+  z-index: 2;
+  bottom: 49px;
+  width: 28px;
+  background: #5b655c;
+}
+
+.building::before {
+  position: absolute;
+  top: 9px;
+  right: 7px;
+  width: 4px;
+  height: 4px;
+  background: #d8cf9e;
+  box-shadow: 9px 0 #d8cf9e, 0 11px #d8cf9e, 9px 11px #d8cf9e, 0 22px #d8cf9e, 9px 22px #d8cf9e;
+  content: "";
+}
+
+.building-one {
+  left: 7%;
+  height: 85px;
+}
+
+.building-two {
+  bottom: 49px;
+  left: 36%;
+  width: 40px;
+  height: 56px;
+}
+
+.building-three {
+  right: 8%;
+  height: 96px;
+}
+
+.building-four {
+  right: 32%;
+  width: 36px;
+  height: 44px;
+}
+
+.sky-label {
+  position: absolute;
+  z-index: 3;
+  bottom: 14px;
+  color: #425c62;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 11px;
+}
+
+.sky-label-low {
+  left: 8%;
+}
+
+.sky-label-high {
+  right: 8%;
+}
+
+.heat-section {
+  padding: 88px max(24px, calc((100vw - 1160px) / 2));
+  border-bottom: 1px solid #d4d8d7;
+  background: #f7f6f0;
+}
+
+.heat-panel {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid #c6cfca;
+  background: #fff;
+}
+
+/* Keep in sync with the SVG's viewBox so the globe is never cropped. */
+.heat-diagram {
+  aspect-ratio: 900 / 600;
+  border: 7px solid #172a37;
+  overflow: hidden;
+  background: #fff;
+}
+
+.heat-diagram svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.heat-copy {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.72fr) minmax(0, 1.28fr);
+  gap: 8px 46px;
+  padding: 30px 36px;
+  border-top: 1px solid #d7ded9;
+}
+
+.heat-copy h3 {
+  grid-column: 1;
+  margin: 0 0 18px;
+  color: #1b2c3a;
+  font-size: 25px;
+  line-height: 1.3;
+}
+
+.heat-copy > p:not(.claim-number, .claim-answer) {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  margin: 0;
+  color: #526570;
+}
+
+.heat-copy .claim-number {
+  grid-column: 1;
+}
+
+.heat-copy .claim-answer {
+  grid-column: 1 / -1;
+  margin: 12px 0 0;
+}
+
+.size-illusion,
+.heat-geometry {
+  position: relative;
+  height: 186px;
+  margin-bottom: 22px;
+  border: 1px solid #c5d2cd;
+  background: #f5f8f4;
+  overflow: hidden;
+}
+
+.size-illusion::before {
+  position: absolute;
+  top: 28px;
+  right: 26%;
+  left: 11%;
+  border-top: 1px dashed #b9c8c1;
+  content: "Same-size discs";
+  color: #607481;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 11px;
+  text-align: center;
+}
+
+.horizon-sun {
+  position: absolute;
+  width: 52px;
+  aspect-ratio: 1;
+  border: 3px solid #f1ba52;
+  border-radius: 50%;
+  background: #da6832;
+}
+
+.horizon-sun-low {
+  bottom: 42px;
+  left: 21%;
+}
+
+.horizon-sun-high {
+  top: 52px;
+  right: 23%;
+}
+
+.horizon-line {
+  position: absolute;
+  right: 0;
+  bottom: 41px;
+  left: 0;
+  height: 2px;
+  background: #507568;
+}
+
+.tree {
+  position: absolute;
+  z-index: 1;
+  bottom: 42px;
+  width: 0;
+  height: 0;
+  border-right: 12px solid transparent;
+  border-bottom: 45px solid #447267;
+  border-left: 12px solid transparent;
+}
+
+.tree::after {
+  position: absolute;
+  top: 41px;
+  left: -2px;
+  width: 4px;
+  height: 16px;
+  background: #315444;
+  content: "";
+}
+
+.tree-one {
+  left: 8%;
+}
+
+.tree-two {
+  bottom: 42px;
+  left: 38%;
+  transform: scale(0.65);
+}
+
+.tree-three {
+  right: 7%;
+  transform: scale(0.8);
+}
+
+.heat-sun {
+  position: absolute;
+  top: 18px;
+  left: 16%;
+  width: 40px;
+  aspect-ratio: 1;
+  border: 3px solid #ecb553;
+  border-radius: 50%;
+  background: #d86331;
+}
+
+.ray {
+  position: absolute;
+  z-index: 1;
+  height: 2px;
+  background: #cf7a37;
+  transform-origin: left center;
+}
+
+.ray-long {
+  top: 58px;
+  left: 25%;
+  width: 150px;
+  transform: rotate(37deg);
+}
+
+.ray-short {
+  top: 57px;
+  right: 17%;
+  width: 88px;
+  transform: rotate(76deg);
+}
+
+.air-layer {
+  position: absolute;
+  right: 0;
+  bottom: 45px;
+  left: 0;
+  height: 40px;
+  border-top: 1px dashed #6ca7b2;
+  border-bottom: 1px dashed #6ca7b2;
+  background: rgb(141 207 211 / 18%);
+}
+
+.ground {
+  position: absolute;
+  z-index: 2;
+  bottom: 13px;
+  height: 15px;
+  border: 2px solid #39705d;
+  background: #9ab981;
+}
+
+.ground-wide {
+  left: 34%;
+  width: 105px;
+  transform: skewX(35deg);
+}
+
+.ground-tight {
+  right: 18%;
+  width: 40px;
+  transform: skewX(35deg);
+}
+
+.layer {
+  border-bottom: 1px solid #d4d8d7;
+}
+
+.section-heading {
+  margin-bottom: 42px;
+}
+
+.layer-rotation,
+.verdict-section {
+  color: #edf2ec;
+  background: #112238;
+}
+
+.section-heading-light h2 {
+  color: #fffdf7;
+}
+
+.section-heading-light > p:last-child {
+  color: #bed0d3;
+}
+
+.section-heading-light .eyebrow {
+  color: #f0b35b;
+}
+
+.instrument {
+  border: 1px solid #cbd3d1;
+  background: #fff;
+}
+
+.instrument-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 54px;
+  padding: 0 22px;
+  border-bottom: 1px solid #d5dcd9;
+  background: #edf2ef;
+  gap: 16px;
+}
+
+.instrument-head p {
+  margin: 0;
+}
+
+.instrument-head span {
+  color: #526070;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 13px;
+}
+
+.scale-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 96px minmax(140px, 1fr) 134px;
+  align-items: center;
+  min-height: 240px;
+  padding: 42px 8%;
+  overflow: hidden;
+  background: #f8faf9;
+}
+
+.scale-earth,
+.scale-sun {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.scale-earth {
+  width: 52px;
+  justify-self: center;
+  border: 3px solid #285e78;
+  background: #4a9eaf;
+}
+
+.scale-sun {
+  width: 134px;
+  border: 7px solid #efb844;
+  background: #cf562b;
+  box-shadow: 0 0 0 10px #f7ded0;
+}
+
+.scale-distance {
+  position: relative;
+  height: 80px;
+  color: #8d4b2c;
+  text-align: center;
+}
+
+.scale-distance span {
+  position: absolute;
+  top: 38px;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background: #ca7845;
+}
+
+.scale-distance span::before,
+.scale-distance span::after {
+  position: absolute;
+  top: -5px;
+  width: 2px;
+  height: 12px;
+  background: #ca7845;
+  content: "";
+}
+
+.scale-distance span::before {
+  left: 0;
+}
+
+.scale-distance span::after {
+  right: 0;
+}
+
+.scale-distance b {
+  position: relative;
+  top: 2px;
+  display: inline-block;
+  padding: 0 12px;
+  background: #f8faf9;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 18px;
+}
+
+.scale-stat-grid,
+.contribution-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.scale-stat-grid {
+  border-top: 1px solid #d5dcd9;
+}
+
+.scale-stat-grid div {
+  display: grid;
+  gap: 3px;
+  padding: 20px 22px;
+}
+
+.scale-stat-grid div + div {
+  border-left: 1px solid #d5dcd9;
+}
+
+.scale-stat-grid strong {
+  color: #9b3d2d;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 20px;
+}
+
+.scale-stat-grid span {
+  color: #607080;
+  font-size: 13px;
+}
+
+.instrument-note {
+  margin: 0;
+  color: #5f6d7c;
+  font-size: 14px;
+}
+
+.scale-instrument > .instrument-note {
+  padding: 18px 22px;
+}
+
+.rotation-instrument,
+.orbit-instrument {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(330px, 0.8fr);
+  border-color: #34516c;
+}
+
+.rotation-visual,
+.orbit-visual {
+  position: relative;
+  min-height: 405px;
+  overflow: hidden;
+  background: #0b1627;
+}
+
+.rotation-visual {
+  /* Direction of sunlight. Zero means the sun sits due right, which is what
+     makes the equator draw horizontal and the terminator vertical — the two
+     stay square to each other at any value, this one just squares them to the
+     frame too. Keep in sync with SUN_TILT_DEG in main.ts. */
+  --sun-tilt: 0deg;
+
+  min-height: 460px;
+  background: #050c17;
+}
+
+.rotation-legend {
+  position: absolute;
+  z-index: 6;
+  top: 15%;
+  left: 6%;
+  display: grid;
+  gap: 12px;
+  color: #63f2df;
+  font-size: 16px;
+  font-weight: 700;
+  text-shadow: 0 0 14px rgb(44 239 211 / 68%);
+}
+
+.rotation-legend p {
+  margin: 0;
+}
+
+.rotation-legend span {
+  display: inline-block;
+  min-width: 48px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 31px;
+  font-weight: 400;
+}
+
+.sun-rays {
+  position: absolute;
+  z-index: 2;
+  top: 2%;
+  right: 0;
+  bottom: 6%;
+  display: grid;
+  align-content: center;
+  width: 56%;
+  gap: 26px;
+
+  /* Pivot on Earth's centre (58%, 53% of the visual) so the rays stay square to
+     the terminator. Recompute both values if the box or Earth's offset moves. */
+  transform: rotate(var(--sun-tilt));
+  transform-origin: 25% 55%;
+}
+
+.sun-rays span {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #e9c74e 13%, #e9c74e);
+  box-shadow: 0 0 8px rgb(231 189 76 / 50%);
+}
+
+/* Dawn/dusk terminator: through Earth's centre and square to the rays, so it
+   stays aligned with .rotation-earth's offset and rotates with --sun-tilt. */
+.solar-reference {
+  position: absolute;
+  z-index: 5;
+  top: 6%;
+  bottom: 5%;
+  left: 58%;
+  border-left: 4px dashed #f29924;
+  filter: drop-shadow(0 0 5px rgb(242 153 36 / 45%));
+  transform: rotate(var(--sun-tilt));
+  transform-origin: 0% 53%;
+}
+
+.rotation-earth {
+  position: absolute;
+  z-index: 4;
+  top: 53%;
+  left: 58%;
+  width: min(66%, 420px);
+  aspect-ratio: 1;
+
+  /* Not clipped: the observer stands on the limb at noon, so they have to be
+     free to straddle it. .earth-spin carries the circular clip instead. */
+  border: 2px solid #5595b6;
+  border-radius: 50%;
+  background-color: #02060b;
+  box-shadow: 0 0 28px rgb(92 191 232 / 30%);
+  cursor: grab;
+  touch-action: none;
+  transform: translate(-50%, -50%);
+}
+
+.rotation-earth[data-dragging="true"] {
+  cursor: grabbing;
+}
+
+.earth-spin {
+  --drift-x: 0%;
+  --drift-y: 0%;
+
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+/* The wireframe that carries the rotation. Its viewBox is the globe, and the
+   rotation lines the polar axis up with the terminator, so an ellipse of
+   ry: 100 spans exactly pole to pole. */
+.earth-grid {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+  transform: rotate(var(--sun-tilt));
+}
+
+.earth-grid path,
+.earth-grid line {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.grid-parallel {
+  stroke: rgb(255 214 130 / 34%);
+  stroke-dasharray: 5 5;
+  stroke-width: 1.5;
+}
+
+.grid-observer-meridian {
+  stroke: rgb(122 168 255 / 62%);
+  stroke-width: 1.8;
+}
+
+.day-night {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(
+    90deg,
+    rgb(1 4 9 / 88%) 0%,
+    rgb(1 4 9 / 84%) 34%,
+    rgb(1 4 9 / 52%) 46%,
+    rgb(1 4 9 / 12%) 54%,
+    rgb(255 241 199 / 8%) 72%,
+    rgb(255 236 178 / 16%) 100%
+  );
+  pointer-events: none;
+  transform: rotate(var(--sun-tilt));
+}
+
+.night-label,
+.day-label {
+  position: absolute;
+  z-index: 3;
+  bottom: 14%;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  pointer-events: none;
+  text-transform: uppercase;
+}
+
+.night-label {
+  left: 19%;
+  color: rgb(150 178 205 / 78%);
+}
+
+.day-label {
+  right: 19%;
+  color: rgb(255 227 150 / 82%);
+}
+
+.drag-hint {
+  position: absolute;
+  z-index: 7;
+  bottom: 14px;
+  left: 18px;
+  margin: 0;
+  padding: 4px 11px;
+  border: 1px solid rgb(120 176 214 / 32%);
+  border-radius: 999px;
+  background: rgb(8 18 32 / 68%);
+  color: #9fd0ea;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+}
+
+/* Oversized so main.ts can slide it along the equator as Earth turns without
+   the photo's own dark limb creeping in. The 158% mirrors EARTH_TEXTURE_SCALE;
+   change one and the drift maths in main.ts needs the other. */
+.earth-texture {
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  width: 158%;
+  max-width: none;
+  height: 158%;
+  object-fit: cover;
+  transform: translate(calc(-50% + var(--drift-x)), calc(-50% + var(--drift-y)));
+}
+
+.earth-center {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  left: 50%;
+  width: 11px;
+  aspect-ratio: 1;
+  border: 2px solid #eafffb;
+  border-radius: 50%;
+  background: #59f4dd;
+  box-shadow: 0 0 14px #3df2dc;
+  transform: translate(-50%, -50%);
+}
+
+/* The equatorial plane seen edge-on, so it must run through the globe's centre —
+   not 53% down it, as it did before. */
+.equator {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  right: 3%;
+  left: 3%;
+  border-top: 2px dashed rgb(206 234 223 / 58%);
+  transform: rotate(var(--sun-tilt));
+}
+
+.geometry-line {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  height: 0;
+  border-top: 3px solid #49eee0;
+  box-shadow: 0 0 10px rgb(73 238 224 / 78%);
+  transform-origin: left center;
+}
+
+.geometry-line::after {
+  position: absolute;
+  top: -6px;
+  right: -2px;
+  width: 9px;
+  height: 9px;
+  border-top: 2px solid #49eee0;
+  border-right: 2px solid #49eee0;
+  content: "";
+  transform: rotate(45deg);
+}
+
+.radius-line {
+  top: 50%;
+}
+
+.distance-line {
+  border-color: #7aa8ff;
+  box-shadow: 0 0 11px rgb(105 155 255 / 82%);
+}
+
+.distance-line::after {
+  border-color: #7aa8ff;
+}
+
+.geometry-label {
+  position: absolute;
+  z-index: 5;
+  color: #58f0df;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 30px;
+  font-style: italic;
+  font-weight: 700;
+  text-shadow: 0 0 12px rgb(61 242 220 / 75%);
+  transform: translate(-50%, -50%);
+}
+
+.distance-label {
+  color: #9eb8ff;
+  text-shadow: 0 0 12px rgb(110 156 255 / 75%);
+}
+
+.observer-dot {
+  position: absolute;
+  z-index: 6;
+  width: 40px;
+  height: 49px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  cursor: grab;
+  filter: drop-shadow(0 0 6px rgb(255 208 112 / 55%));
+  touch-action: none;
+  transform: translate(-50%, -50%) rotate(var(--observer-tilt, 0deg));
+}
+
+.observer-dot::before {
+  position: absolute;
+  top: 0;
+  left: 13px;
+  width: 13px;
+  height: 13px;
+  border: 2px solid #101a28;
+  border-radius: 50%;
+  background: #fff3ca;
+  box-shadow: 0 0 0 3px rgb(255 190 67 / 32%), 0 0 14px rgb(255 202 99 / 75%);
+  content: "";
+}
+
+.observer-dot span {
+  position: absolute;
+  top: 15px;
+  left: 8px;
+  width: 24px;
+  height: 29px;
+  border: 2px solid #e9f3f3;
+  border-radius: 43% 43% 24% 24%;
+  background: linear-gradient(90deg, #1b2735, #455c66 48%, #1a2633);
+  box-shadow: 0 4px 8px rgb(0 0 0 / 38%);
+}
+
+.observer-dot span::before,
+.observer-dot span::after {
+  position: absolute;
+  top: 4px;
+  width: 12px;
+  height: 3px;
+  border-radius: 3px;
+  background: #e9f3f3;
+  content: "";
+}
+
+.observer-dot span::before {
+  right: 18px;
+  transform: rotate(-31deg);
+}
+
+.observer-dot span::after {
+  left: 18px;
+  transform: rotate(31deg);
+}
+
+.observer-dot:hover,
+.observer-dot:focus-visible {
+  filter: brightness(1.25);
+}
+
+.observer-dot:focus-visible {
+  outline: 3px solid #ffdf70;
+  outline-offset: 5px;
+}
+
+.observer-dot[data-dragging="true"] {
+  cursor: grabbing;
+}
+
+
+.sun-direction {
+  position: absolute;
+  z-index: 3;
+  right: 4%;
+  bottom: 9%;
+  color: #e9c74e;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgb(233 199 78 / 55%);
+}
+
+.controls-panel {
+  padding: 36px;
+  background: #fff;
+}
+
+.control-kicker {
+  margin-bottom: 30px;
+}
+
+.controls-panel label,
+.verdict-controls label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  color: #1e2b3a;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+output {
+  color: #a2482d;
+  font-variant-numeric: tabular-nums;
+}
+
+input[type="range"] {
+  width: 100%;
+  height: 24px;
+  margin: 12px 0 0;
+  accent-color: #a2482d;
+  cursor: pointer;
+}
+
+input[type="date"] {
+  width: 100%;
+  min-height: 42px;
+  margin: 12px 0 0;
+  border: 1px solid #bac6cb;
+  border-radius: 4px;
+  background: #fff;
+  color: #1e2b3a;
+  padding: 8px 10px;
+}
+
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  color: #71808c;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 12px;
+}
+
+.metric-list {
+  display: grid;
+  gap: 0;
+  margin: 32px 0 28px;
+  border-top: 1px solid #d5dcd9;
+}
+
+.metric-list div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 13px 0;
+  border-bottom: 1px solid #d5dcd9;
+  gap: 18px;
+}
+
+.metric-list dt {
+  color: #5f6d7c;
+  font-size: 14px;
+}
+
+.metric-list dd {
+  margin: 0;
+  color: #1e2b3a;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  text-align: right;
+}
+
+.layer-orbit {
+  background: #eef4f1;
+}
+
+.orbit-visual {
+  background: #0c1727;
+
+  --orbit-radius-x: min(39%, 250px);
+  --orbit-radius-y: min(28%, 135px);
+  --orbit-focus-offset: 4%;
+}
+
+/* Same box the bordered div occupied. Visible overflow because the stroke
+   straddles the viewBox edge and each arc's glow reaches past it — the glow is a
+   drop-shadow now rather than a box-shadow, so it follows the arcs instead of
+   ringing a rectangle. */
+.orbit-ring {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  overflow: visible;
+  width: min(78%, 500px);
+  height: min(56%, 270px);
+  transform: translate(-50%, -50%);
+}
+
+.orbit-arc,
+.orbit-ring-inner {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.orbit-arc {
+  stroke-width: 4;
+}
+
+/* January to July, drawing away from the sun toward aphelion — so it wears
+   aphelion's purple, the colour of that side's label, distance line and marker. */
+.orbit-arc-receding {
+  stroke: #9c67f1;
+  filter: drop-shadow(0 0 5px rgb(156 103 241 / 78%));
+}
+
+/* July back to January, closing on perihelion, in perihelion's blue. */
+.orbit-arc-closing {
+  stroke: #52bcf3;
+  filter: drop-shadow(0 0 5px rgb(82 188 243 / 78%));
+}
+
+.orbit-ring-inner {
+  stroke: rgb(225 239 243 / 44%);
+  stroke-dasharray: 5 5;
+  stroke-width: 1;
+}
+
+/* A star is self-luminous, so it gets no rim and no off-centre highlight — those
+   are what light a billiard ball, and together with the old hard 7px shadow ring
+   they banded the sun into three concentric rings. The core is centred and the
+   glow is all blurred, so brightness falls off continuously from the middle out
+   and there is no edge anywhere in it. */
+.orbit-sun {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  left: calc(50% + var(--orbit-focus-offset));
+  width: 72px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, #fffdf0 0 12%, #ffe583 30%, #ffb03e 56%, #f7791f 80%, #e05612 100%);
+  box-shadow:
+    0 0 16px 3px rgb(255 152 50 / 60%),
+    0 0 42px 11px rgb(250 112 30 / 32%),
+    0 0 88px 28px rgb(240 94 22 / 15%);
+  transform: translate(-50%, -50%);
+}
+
+.orbit-earth {
+  /* Screen angle from this globe toward the sun: 0deg is due right, and it grows
+     clockwise because screen y points down. It decides which side is day. */
+  --sun-dir: 0deg;
+
+  position: absolute;
+  z-index: 4;
+  width: 38px;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 1px solid rgb(229 248 247 / 78%);
+  border-radius: 50%;
+  background: #234c79;
+
+  /* All blurred. The old first shadow was a zero-blur 4px ring, which read as a
+     second outline around the rim rather than as glow. */
+  box-shadow: 0 0 7px 1px rgb(139 212 235 / 40%), 0 0 17px rgb(131 214 214 / 70%);
+  transform: translate(-50%, -50%);
+}
+
+/* The photo is a globe shot with its own night side and its own dark limb still
+   in frame, so the old 132% crop pulled both inside the circle: what you read as
+   the planet was the lit part, which sat off-centre and came to a crescent. The
+   largest square of that photo that is lit corner to corner is only 33% of it,
+   centred a third of the way down — hence the 303% blow-up and this offset. Now
+   terrain fills the circle edge to edge, so the drawn edge is the planet's edge. */
+.orbit-earth img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 303%;
+  max-width: none;
+  height: 303%;
+  object-fit: cover;
+  transform: translate(-33%, -7.7%);
+}
+
+/* What turns a filled circle back into a sphere. Rotating the whole layer to
+   face away from the sun means one gradient pair serves every globe: local left
+   is the sunward limb and takes the highlight, local right is the night side and
+   takes the shadow. A square always contains its own inscribed circle whatever
+   its rotation, so inset 0 never uncovers the rim as this spins. */
+.orbit-earth::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background:
+    radial-gradient(circle at 16% 46%, rgb(255 253 240 / 26%) 0, rgb(255 253 240 / 0%) 52%),
+    linear-gradient(90deg, rgb(3 9 20 / 0%) 30%, rgb(3 9 20 / 55%) 76%, rgb(1 4 11 / 78%) 100%);
+  content: "";
+  pointer-events: none;
+  transform: rotate(calc(var(--sun-dir) + 180deg));
+}
+
+/* Both markers sit on the sun's own axis, so their lit side is simply the side
+   the sun is on: due right for the far one, due left for the near one. */
+.orbit-earth-aphelion {
+  --sun-dir: 0deg;
+
+  top: 50%;
+  left: calc(50% - var(--orbit-radius-x));
+  border-color: rgb(223 196 255 / 82%);
+  box-shadow: 0 0 8px 1px rgb(156 103 241 / 46%), 0 0 20px rgb(165 117 245 / 72%);
+}
+
+.orbit-earth-perihelion {
+  --sun-dir: 180deg;
+
+  top: 50%;
+  left: calc(50% + var(--orbit-radius-x));
+  border-color: rgb(201 242 255 / 82%);
+  box-shadow: 0 0 8px 1px rgb(82 188 243 / 44%), 0 0 20px rgb(86 197 246 / 72%);
+}
+
+/* This is the one the reader drags, so it was the wrong thing to make the
+   smallest object on the diagram — at 17px with a 2px rim, more than half of it
+   was outline. It now matches the two fixed markers and is picked out by its
+   warm glow instead of by size. main.ts keeps --sun-dir pointed at the sun as
+   it travels. */
+.orbit-earth-selected {
+  z-index: 6;
+  width: 38px;
+  padding: 0;
+  border-color: rgb(255 255 255 / 92%);
+  box-shadow: 0 0 9px 2px rgb(255 225 127 / 44%), 0 0 22px rgb(255 225 118 / 78%);
+  cursor: grab;
+  touch-action: none;
+  transition: left 280ms ease, top 280ms ease;
+}
+
+.orbit-earth-selected:hover,
+.orbit-earth-selected:focus-visible {
+  filter: brightness(1.22);
+}
+
+.orbit-earth-selected:focus-visible {
+  outline: 3px solid #ffdf70;
+  outline-offset: 5px;
+}
+
+.orbit-earth-selected[data-dragging="true"] {
+  cursor: grabbing;
+  transition: none;
+}
+
+.perihelion-label,
+.aphelion-label,
+.orbit-date-label {
+  position: absolute;
+  z-index: 5;
+  color: #dce8e6;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+/*
+ * Sized to their own text rather than to a fixed 140px. The date inside is
+ * nowrap and sets the widest line — "Around 3 January" is 183px at this weight,
+ * so in the old box it overflowed the line by 43px and fell off the right edge
+ * of the panel. Overflow leaves a line box on the end side whatever its
+ * text-align, so aligning right never had a chance of holding it in; the box has
+ * to be wide enough in the first place.
+ */
+.perihelion-label {
+  top: calc(50% + 38px);
+  right: 16px;
+  width: max-content;
+  color: #f8faf9;
+  text-align: right;
+  transform: none;
+}
+
+.aphelion-label {
+  top: calc(50% + 38px);
+  left: 16px;
+  width: max-content;
+  color: #f8faf9;
+  transform: none;
+}
+
+.perihelion-label strong,
+.aphelion-label strong {
+  display: block;
+  font-size: 22px;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.perihelion-label em,
+.aphelion-label em {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.perihelion-label em {
+  color: #79d1f7;
+}
+
+.aphelion-label em {
+  color: #c29af9;
+}
+
+.perihelion-label span,
+.aphelion-label span {
+  display: block;
+  margin-top: 5px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.perihelion-label span {
+  color: #52bcf3;
+}
+
+.aphelion-label span {
+  color: #9c67f1;
+}
+
+.orbit-distance {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  height: 4px;
+  transform: translateY(-50%);
+}
+
+.orbit-distance::before,
+.orbit-distance::after {
+  position: absolute;
+  top: 50%;
+  width: 11px;
+  height: 11px;
+  border-top: 3px solid currentcolor;
+  border-right: 3px solid currentcolor;
+  content: "";
+}
+
+.orbit-distance::before {
+  left: -1px;
+  transform: translateY(-50%) rotate(-135deg);
+}
+
+.orbit-distance::after {
+  right: -1px;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.orbit-distance b {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.orbit-distance-aphelion {
+  left: calc(50% - var(--orbit-radius-x));
+  width: calc(var(--orbit-radius-x) + var(--orbit-focus-offset));
+  color: #9c67f1;
+  background: #9c67f1;
+  box-shadow: 0 0 10px rgb(156 103 241 / 70%);
+}
+
+.orbit-distance-perihelion {
+  left: calc(50% + var(--orbit-focus-offset));
+  width: calc(var(--orbit-radius-x) - var(--orbit-focus-offset));
+  color: #52bcf3;
+  background: #52bcf3;
+  box-shadow: 0 0 10px rgb(82 188 243 / 70%);
+}
+
+.orbit-date-label {
+  z-index: 7;
+  padding: 3px 7px;
+  border: 1px solid rgb(255 229 130 / 72%);
+  border-radius: 3px;
+  background: rgb(8 18 31 / 82%);
+  color: #ffe58a;
+
+  /* Anchored at the globe's centre, so the offset has to clear its radius: 19px
+     of globe plus its glow. The old 10/-27 was set when this globe was 17px
+     across and put the label's lower-left corner inside the new one. main.ts
+     swings --label-dx to the far side when the globe is near the right edge; the
+     gap lives here so each breakpoint states it once. */
+  --label-gap: 18px;
+  --label-dx: var(--label-gap);
+
+  font-size: 11px;
+
+  /* Without this it shrink-wraps against the panel edge and "3 January" breaks
+     over two lines, which drops its lower corner back onto the globe — the very
+     collision the offset above is there to avoid. */
+  white-space: nowrap;
+  transform: translate(var(--label-dx), -42px);
+  transition: left 280ms ease, top 280ms ease;
+}
+
+.orbit-current-date {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  padding: 0 0 15px;
+  border-bottom: 1px solid #d5dcda;
+  color: #1e2b3a;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.verdict-workbench {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.8fr) minmax(0, 1.2fr);
+  border: 1px solid #49657d;
+  background: #fbfcfa;
+}
+
+.verdict-controls {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: 34px;
+  border-right: 1px solid #ccd9d7;
+  background: #e7efeb;
+}
+
+.verdict-controls label:not(:first-child) {
+  margin-top: 18px;
+}
+
+.verdict-output {
+  padding: 38px;
+  color: #1e2b3a;
+}
+
+.verdict-label {
+  margin-bottom: 14px;
+}
+
+.verdict-main {
+  margin-bottom: 8px;
+  color: #9b3d2d;
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.verdict-detail {
+  margin-bottom: 30px;
+  color: #5b6b76;
+  font-size: 15px;
+}
+
+.contribution-grid {
+  border-top: 1px solid #d5dcd9;
+  border-bottom: 1px solid #d5dcd9;
+}
+
+.contribution-grid div {
+  display: grid;
+  gap: 6px;
+  padding: 17px 14px 17px 0;
+}
+
+.contribution-grid div + div {
+  padding-left: 14px;
+  border-left: 1px solid #d5dcd9;
+}
+
+.contribution-grid span {
+  color: #667782;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 12px;
+}
+
+.contribution-grid strong {
+  color: #203c51;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.model-disclaimer {
+  margin: 20px 0 0;
+  color: #71808c;
+  font-size: 12px;
+}
+
+.sources {
+  padding-top: 56px;
+  padding-bottom: 56px;
+  background: #dfe8e4;
+}
+
+.sources h2 {
+  margin-bottom: 12px;
+  font-size: 24px;
+}
+
+.sources p,
+.sources li {
+  max-width: 780px;
+  color: #526070;
+}
+
+.sources ul {
+  margin: 18px 0 0;
+  padding-left: 20px;
+}
+
+.sources a {
+  color: #6f3527;
+}
+
+footer {
+  padding: 20px 24px;
+  background: #18293e;
+  color: #c6d3d2;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 12px;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+}
+
+@media (width <= 820px) {
+  .site-nav {
+    width: min(100% - 32px, 1160px);
+  }
+
+  .nav-links {
+    gap: 12px;
+    font-size: 13px;
+  }
+
+  .nav-links a:nth-child(1),
+  .nav-links a:nth-child(2) {
+    display: none;
+  }
+
+  .opening,
+  .layer,
+  .verdict-section,
+  .clues-section,
+  .video-comparison-section,
+  .heat-section,
+  .sources {
+    padding: 64px 24px;
+  }
+
+  .opening {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    gap: 44px;
+  }
+
+  h1 {
+    font-size: 42px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  .dialogue-stage {
+    min-height: 460px;
+  }
+
+  .master-section {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 64px 24px;
+  }
+
+  .master-figure {
+    min-height: 300px;
+  }
+
+  .heat-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .heat-copy {
+    border-top: 1px solid #d7ded9;
+    border-left: 0;
+  }
+
+  .claim-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .claim + .claim {
+    border-top: 1px solid #a8bbb6;
+    border-left: 0;
+  }
+
+  .rotation-instrument,
+  .orbit-instrument,
+  .verdict-workbench {
+    grid-template-columns: 1fr;
+  }
+
+  .controls-panel,
+  .verdict-controls {
+    padding: 28px 24px;
+  }
+
+  .verdict-controls {
+    border-right: 0;
+    border-bottom: 1px solid #ccd9d7;
+  }
+}
+
+@media (width <= 560px) {
+  .wordmark span {
+    display: none;
+  }
+
+  .nav-links a:nth-child(3) {
+    display: none;
+  }
+
+  .nav-links {
+    gap: 16px;
+  }
+
+  .opening,
+  .layer,
+  .verdict-section,
+  .clues-section,
+  .video-comparison-section,
+  .heat-section,
+  .sources {
+    padding: 52px 18px;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  h2 {
+    font-size: 27px;
+  }
+
+  .lead,
+  .section-heading > p:last-child {
+    font-size: 16px;
+  }
+
+  .dialogue-stage {
+    min-height: 500px;
+  }
+
+  .clues-section {
+    min-height: auto;
+  }
+
+  .illusion-study {
+    min-height: 0;
+    padding: 24px 18px;
+  }
+
+  .illusion-study h3 {
+    font-size: 23px;
+  }
+
+  .illusion-study .ebbinghaus {
+    --disc-scale: 0.94;
+
+    min-height: 238px;
+    gap: 12px;
+  }
+
+  .illusion-study .illusion-cluster {
+    transform: scale(0.94);
+  }
+
+  .master-section {
+    padding: 52px 18px;
+  }
+
+  .master-figure {
+    min-height: 268px;
+  }
+
+  .master-halo {
+    width: 108px;
+  }
+
+  .master-person {
+    width: 180px;
+    height: 268px;
+  }
+
+  .master-head {
+    left: 63px;
+    width: 54px;
+  }
+
+  .master-hat {
+    left: 43px;
+    width: 92px;
+  }
+
+  .master-robe {
+    width: 156px;
+    height: 195px;
+  }
+
+  .master-staff {
+    height: 194px;
+  }
+
+  .dialogue-sun {
+    top: 10%;
+    width: 54px;
+  }
+
+  .debater {
+    width: 50%;
+  }
+
+  .debater-a {
+    left: 0;
+  }
+
+  .debater-b {
+    right: 0;
+  }
+
+  .person {
+    width: 98px;
+    height: 190px;
+  }
+
+  .person-a {
+    left: 15%;
+  }
+
+  .person-b {
+    right: 15%;
+  }
+
+  .person-head {
+    top: 12px;
+    left: 28px;
+    width: 45px;
+    border-width: 3px;
+  }
+
+  .person-head::before {
+    top: -10px;
+    left: -7px;
+    width: 56px;
+    height: 22px;
+  }
+
+  .person-robe {
+    width: 98px;
+    height: 140px;
+  }
+
+  .speech {
+    top: 2%;
+    max-width: 176px;
+    padding: 13px;
+  }
+
+  .speech p {
+    font-size: 12px;
+  }
+
+  .speech strong {
+    font-size: 12px;
+  }
+
+  .speech-a::after {
+    left: 28px;
+  }
+
+  .speech-b::after {
+    right: 28px;
+  }
+
+  .stage-question {
+    bottom: 20px;
+    font-size: 17px;
+  }
+
+  .claim {
+    padding: 24px 18px 26px;
+  }
+
+  .claim h3 {
+    font-size: 21px;
+  }
+
+  .ebbinghaus {
+    min-height: 180px;
+    gap: 0;
+  }
+
+  .illusion-cluster {
+    width: 132px;
+  }
+
+  .horizon-reference {
+    height: 195px;
+  }
+
+  .video-evidence-pair {
+    grid-template-columns: 1fr;
+  }
+
+  .sky-label {
+    max-width: 42%;
+    font-size: 10px;
+  }
+
+  .heat-copy {
+    display: block;
+    padding: 26px 18px;
+  }
+
+  .heat-copy > p:not(.claim-number, .claim-answer) {
+    margin: 0 0 18px;
+  }
+
+  .scale-stage {
+    grid-template-columns: 55px minmax(80px, 1fr) 86px;
+    min-height: 185px;
+    padding: 30px 5%;
+  }
+
+  .scale-earth {
+    width: 38px;
+    font-size: 11px;
+  }
+
+  .scale-sun {
+    width: 86px;
+    border-width: 5px;
+    box-shadow: 0 0 0 7px #f7ded0;
+    font-size: 11px;
+  }
+
+  .scale-distance b {
+    font-size: 13px;
+  }
+
+  .scale-stat-grid,
+  .contribution-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .scale-stat-grid div + div,
+  .contribution-grid div + div {
+    border-top: 1px solid #d5dcd9;
+    border-left: 0;
+  }
+
+  .scale-stat-grid div,
+  .contribution-grid div,
+  .contribution-grid div + div {
+    padding: 14px 18px;
+  }
+
+  .rotation-visual,
+  .orbit-visual {
+    min-height: 310px;
+  }
+
+  .orbit-visual {
+    --orbit-radius-x: min(39%, 138px);
+    --orbit-radius-y: min(28%, 86px);
+  }
+
+  .orbit-ring {
+    width: min(78%, 276px);
+    height: min(56%, 172px);
+  }
+
+  /* 56px was 41% of the semi-major axis here — the sun crowded the inner dashed
+     ellipse and left the near number nowhere to stand. */
+  .orbit-sun {
+    width: 46px;
+  }
+
+  .orbit-earth {
+    width: 28px;
+  }
+
+  /* Same size as the markers here too, and 28px is still a comfortable drag
+     target once the surrounding glow is counted. */
+  .orbit-earth-selected {
+    width: 28px;
+  }
+
+  .perihelion-label,
+  .aphelion-label {
+    top: 7%;
+    transform: none;
+  }
+
+  .perihelion-label {
+    right: 4%;
+  }
+
+  .aphelion-label {
+    left: 4%;
+  }
+
+  .perihelion-label strong,
+  .aphelion-label strong {
+    font-size: 14px;
+  }
+
+  .perihelion-label span,
+  .aphelion-label span {
+    margin-top: 1px;
+    font-size: 13px;
+  }
+
+  .orbit-distance b {
+    bottom: 9px;
+    font-size: 9px;
+  }
+
+  /* Each number is centred on its line, but the near end of this one is buried
+     under the sun, so the midpoint of the line sits inside the disc. Nudging it
+     out re-centres it on the stretch you can actually see, between the sun's
+     limb and Earth. The far number needs none of this: its line is longer, and
+     the end the sun covers is the one it runs away from. */
+  .orbit-distance-perihelion b {
+    left: calc(50% + 5px);
+  }
+
+  /* Same clearance sum against the phone's 28px globe. */
+  .orbit-date-label {
+    --label-gap: 13px;
+
+    padding: 2px 4px;
+    font-size: 9px;
+    transform: translate(var(--label-dx), -31px);
+  }
+
+  .rotation-visual {
+    min-height: 390px;
+  }
+
+  .rotation-legend {
+    top: 7%;
+    left: 5%;
+    gap: 5px;
+    font-size: 11px;
+  }
+
+  .rotation-legend span {
+    min-width: 31px;
+    font-size: 22px;
+  }
+
+  .sun-rays {
+    top: 17%;
+    bottom: 14%;
+    width: 42%;
+    gap: 22px;
+
+    /* Earth's centre expressed in this box's own coordinates: the box starts at
+       58% of the visual, so 54% lands 9.5% of its width to the left. */
+    transform-origin: -9.5% 55%;
+  }
+
+  .solar-reference {
+    left: 54%;
+    border-left-width: 3px;
+  }
+
+  /* Pulled in from 59%/77%: the observer stands on the limb at noon, and at the
+     old size and offset the figure hung 12px past the panel and got clipped. */
+  .rotation-earth {
+    top: 55%;
+    left: 54%;
+    width: min(74%, 300px);
+  }
+
+  .geometry-label {
+    font-size: 22px;
+  }
+
+  /* 40×49px is a fifth of the phone's globe — big enough that R has nowhere to
+     stand near dawn, when the radius line is at its shortest. */
+  .observer-dot {
+    scale: 0.8;
+  }
+
+  .sun-direction {
+    right: 3%;
+    font-size: 17px;
+  }
+
+  .verdict-output {
+    padding: 28px 24px;
+  }
+
+  .verdict-main {
+    font-size: 30px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .orbit-earth {
+    transition: none;
+  }
 }

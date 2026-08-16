@@ -1,24 +1,394 @@
 <!doctype html>
-<html lang="en-AU">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>COMP4020 prototype</title>
+    <meta
+      name="description"
+      content="Starting from the classical fable 'Two Children Debate the Sun,' this interactive explainer uses scale, Earth's rotation, and Earth's orbit to work out whether the sun is really closer in the morning or at noon."
+    />
+    <title>Two Children Debate the Sun | When Is It Really Closer?</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <header>
-      <nav aria-label="Primary">
-        <a href="./">Home</a>
+    <header class="site-header">
+      <nav class="site-nav" aria-label="Page navigation">
+        <a class="wordmark" href="#top" aria-label="Back to top">Solar Casebook <span>Two children, one sun</span></a>
+        <div class="nav-links">
+          <a href="#master">Confucius</a>
+          <a href="#clues">Illusion</a>
+          <a href="#scale">Scale</a>
+          <a href="#rotation">Rotation</a>
+          <a href="#orbit">Orbit</a>
+          <a href="#verdict">Verdict</a>
+        </div>
       </nav>
     </header>
-    <main>
-      <h1>COMP4020 prototype</h1>
-      <p data-testid="intro">
-        Replace this with your prototype. This week's brief is on the course website;
-        <code>spec/README.md</code> explains how the checks in this repo relate to it.
-      </p>
+
+    <main id="top">
+      <section class="opening" aria-labelledby="page-title">
+        <div class="opening-copy">
+          <p class="eyebrow">A distance case spanning two thousand years</p>
+          <h1 id="page-title">Is the sun closer in the morning, or at noon?</h1>
+          <p class="lead">
+            Two children saw two different suns: one bigger, one hotter. But does what you see, or what you feel, really tell you the distance?
+          </p>
+          <p class="opening-prompt">Both spoke from what they'd witnessed with their own eyes. So why does the same sun give two different answers?</p>
+          <a class="start-link" href="#master">Bring the case to Confucius <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="dialogue-stage" aria-label="Scene of two ancient children debating the sun's distance">
+          <span class="dialogue-sun" aria-hidden="true"></span>
+          <p class="stage-caption">The Liezi, "Questions of Tang" · travelling east</p>
+          <article class="debater debater-a">
+            <div class="person person-a" aria-hidden="true"><span class="person-head"></span><span class="person-robe"></span></div>
+            <div class="speech speech-a">
+              <p class="speaker">Child A</p>
+              <p>"When the sun first rises, it's as big as a chariot's canopy; by midday, it's like a plate."</p>
+              <strong>Closer in the morning.</strong>
+            </div>
+          </article>
+          <article class="debater debater-b">
+            <div class="person person-b" aria-hidden="true"><span class="person-head"></span><span class="person-robe"></span></div>
+            <div class="speech speech-b">
+              <p class="speaker">Child B</p>
+              <p>"At sunrise it feels cool and crisp; by midday it's like dipping your hand in scalding water."</p>
+              <strong>Closer at noon.</strong>
+            </div>
+          </article>
+          <p class="stage-question">Who's right?</p>
+        </div>
+      </section>
+
+      <section id="master" class="master-section" aria-labelledby="master-title">
+        <div class="master-figure" aria-label="Silhouette of Confucius">
+          <span class="master-halo" aria-hidden="true"></span>
+          <div class="master-person" aria-hidden="true"><span class="master-head"></span><span class="master-hat"></span><span class="master-robe"></span><span class="master-staff"></span></div>
+          <span class="master-caption">Confucius</span>
+        </div>
+        <div class="master-copy">
+          <p class="eyebrow">The story doesn't hand us an answer</p>
+          <h2 id="master-title">"Confucius could not decide."</h2>
+          <p class="master-quote">The children laughed: "Who said you knew so much?"</p>
+          <p>That's not a failed answer. Confucius refused to force a hard question into a tidy, intuitive conclusion. From here, we won't take either child's side — instead, we'll test each of the things they actually observed, one at a time.</p>
+          <a class="start-link" href="#clues">Start with "looks bigger" <span aria-hidden="true">↓</span></a>
+        </div>
+      </section>
+
+      <section id="clues" class="clues-section" aria-labelledby="clues-title">
+        <div class="section-heading">
+          <p class="eyebrow">Possibility one · start with size</p>
+          <h2 id="clues-title">Is the morning sun really bigger?</h2>
+          <p>Before we jump to distance, let's test the claim itself. Child A said the sun looks "as big as a chariot's canopy" at sunrise — so first: can we trust what our eyes tell us about size?</p>
+        </div>
+        <article class="illusion-study">
+          <p class="claim-number">Visual experiment · the Ebbinghaus illusion</p>
+          <h3>What surrounds something changes how big it looks</h3>
+          <div class="ebbinghaus" id="ebbinghaus-illusion" aria-label="Two centre circles that are actually the same size, made to look different by the circles around them">
+            <div class="illusion-cluster illusion-large">
+              <span class="center-disc"></span><span class="ring-dot dot-1"></span><span class="ring-dot dot-2"></span><span class="ring-dot dot-3"></span><span class="ring-dot dot-4"></span><span class="ring-dot dot-5"></span><span class="ring-dot dot-6"></span>
+            </div>
+            <div class="illusion-cluster illusion-small">
+              <span class="center-disc"></span><span class="ring-dot dot-1"></span><span class="ring-dot dot-2"></span><span class="ring-dot dot-3"></span><span class="ring-dot dot-4"></span><span class="ring-dot dot-5"></span><span class="ring-dot dot-6"></span>
+            </div>
+            <span class="measure-line measure-line-top" aria-hidden="true"></span>
+            <span class="measure-line measure-line-bottom" aria-hidden="true"></span>
+          </div>
+          <button class="reveal-button" id="illusion-reveal" type="button" aria-pressed="false">Show that both centres are equal</button>
+          <p>The blue circles in the middle are actually identical in size — but the circles around them change how big they look. This is the Ebbinghaus illusion.</p>
+        </article>
+      </section>
+
+      <section class="video-comparison-section" aria-labelledby="video-evidence-title">
+        <div class="section-heading">
+          <p class="eyebrow">Taking the experiment back to the sky</p>
+          <h2 id="video-evidence-title">Sunrise vs. noon: one sun, two impressions of size</h2>
+          <p>At sunrise there are rooftops, treetops and the horizon for reference; at noon there's only open sky. Watch both clips, then check your own instinct again.</p>
+        </div>
+        <div class="video-evidence-pair">
+          <figure class="sunrise-evidence">
+            <div class="video-frame">
+              <video id="sunrise-video" controls playsinline preload="metadata" src="./media/sunrise.mov">
+                Your browser can't play this sunrise clip.
+              </video>
+              <span class="video-source">Source: neophyte3</span>
+            </div>
+            <figcaption>Sunrise: the sun sits low on the horizon and looks bigger.</figcaption>
+          </figure>
+          <figure class="sunrise-evidence noon-evidence">
+            <div class="video-frame">
+              <video id="noon-sun-video" controls playsinline preload="metadata" src="./media/noon-sun.mov">
+                Your browser can't play this midday-sun clip.
+              </video>
+              <span class="video-source">Source: friction collective</span>
+            </div>
+            <figcaption>Noon: the sun hangs high overhead and looks smaller.</figcaption>
+          </figure>
+        </div>
+        <p class="video-conclusion"><strong>Clue one:</strong> apparent size is worth explaining, but it isn't proof of distance.</p>
+      </section>
+
+      <section id="heat" class="heat-section" aria-labelledby="heat-title">
+        <div class="section-heading">
+          <p class="eyebrow">Possibility two · start with heat</p>
+          <h2 id="heat-title">Is noon hotter because we're closer to the sun?</h2>
+          <p>Child B's sensation was real too. But temperature first tells us where the sun sits in the sky — not how far away it is.</p>
+        </div>
+        <div class="heat-panel">
+          <div class="heat-diagram" role="img" aria-label="At a low solar altitude, sunlight travels a longer path through the atmosphere and spreads its energy over a larger area; at a high solar altitude, the path is shorter and the energy is more concentrated">
+            <!--
+              Globe centred at (860,500): Earth r=380, atmosphere r=470. Every
+              ray ends on the Earth's surface at x = 860 - sqrt(380² - (y-500)²),
+              so the stretch each one cuts through the purple band is the real
+              path length, not a drawn guess. Group b straddles y=500, the
+              globe's widest point, where rays strike square on and the crossing
+              is shortest (~90 units); group a sits high where the same band
+              takes 113–172 units to cross. Recompute the endpoints if the
+              circles or the ray heights move.
+            -->
+            <svg viewBox="0 0 900 600" aria-hidden="true" focusable="false">
+              <rect width="900" height="600" fill="#fff" />
+
+              <circle cx="860" cy="500" r="470" fill="#b9b3ef" />
+              <circle cx="860" cy="500" r="380" fill="#6e89cf" stroke="#515866" stroke-width="5" />
+              <path d="M782 228c42 5 84 22 118 48v67c-34-10-60-28-77-53-20-28-29-47-41-62Z" fill="#eef0e8" transform="translate(860,500) scale(1.041) translate(-820,-590)" />
+
+              <g fill="#111827" font-family="system-ui, -apple-system, sans-serif" font-weight="800">
+                <text x="232" y="122" fill="#d71932" font-family="Georgia, serif" font-size="44" font-weight="400">a</text>
+                <text x="52" y="186" font-size="21">Low solar</text>
+                <text x="52" y="215" font-size="21">altitude</text>
+
+                <text x="232" y="427" fill="#d71932" font-family="Georgia, serif" font-size="44" font-weight="400">b</text>
+                <text x="52" y="491" font-size="21">High solar</text>
+                <text x="52" y="520" font-size="21">altitude</text>
+              </g>
+
+              <g fill="none" stroke="#df2139" stroke-width="4">
+                <path d="M220 145H724" />
+                <path d="M220 195H633" />
+                <path d="M220 245H578" />
+                <path d="M220 450H483" />
+                <path d="M220 500H480" />
+                <path d="M220 550H483" />
+              </g>
+
+              <g fill="#111827" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="800">
+                <text x="515" y="185">longer path</text>
+                <text x="292" y="490">shorter path</text>
+              </g>
+
+              <g fill="#fff" font-family="system-ui, -apple-system, sans-serif" font-weight="800">
+                <text x="700" y="110" font-size="24">Atmosphere</text>
+                <text x="742" y="380" font-size="30">Earth</text>
+              </g>
+
+              <ellipse cx="650" cy="195" rx="82" ry="22" fill="#7b8fc4" fill-opacity="0.5" stroke="#e5815f" stroke-width="4" transform="rotate(-34 650 195)" />
+              <text x="668" y="258" fill="#111827" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="800" transform="rotate(-22 668 258)">larger area</text>
+
+              <ellipse cx="481" cy="500" rx="13" ry="56" fill="#c98b8b" fill-opacity="0.5" stroke="#e05f54" stroke-width="4" />
+              <text x="524" y="462" fill="#111827" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="800" transform="rotate(90 524 462)">smaller area</text>
+
+              <!-- Drawn through the globe's centre (860,500), as an equator seen
+                   edge-on must be. -->
+              <path d="M545 340 885 513" fill="none" stroke="#d7d2c8" stroke-width="3" stroke-dasharray="8 7" />
+              <text x="734" y="483" fill="#d7d2c8" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="800" transform="rotate(27 734 483)">Equator</text>
+            </svg>
+          </div>
+          <div class="heat-copy">
+            <p class="claim-number">The effect of solar altitude</p>
+            <h3>The higher the sun, the more concentrated the energy</h3>
+            <p>At noon, sunlight passes through less atmosphere, and the same beam covers a smaller patch of ground, so the surface heats up more. That's enough to explain why noon "feels like scalding water" — but it says nothing about how far away the sun actually is.</p>
+            <p class="claim-answer"><strong>Clue two:</strong> how hot it feels is a signal of the sun's altitude, not a verdict on distance.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="scale" class="layer layer-scale" aria-labelledby="scale-title">
+        <div class="section-heading">
+          <p class="eyebrow">Layer one · look at scale first</p>
+          <h2 id="scale-title">150 million kilometres: where intuition breaks down</h2>
+          <p>
+            Earth's radius is only 6,371 km, while the average Earth–Sun distance is about 149.6 million km. Moving from morning to noon really does change your position — but only by a sliver of that total distance.
+          </p>
+        </div>
+        <div class="instrument scale-instrument" data-testid="scale-model">
+          <div class="instrument-head">
+            <p>Scale experiment</p>
+            <span id="scale-ratio">Earth's radius is about 0.0043% of the Earth–Sun distance</span>
+          </div>
+          <div class="scale-stage" aria-hidden="true">
+            <div class="scale-earth"><span>Earth</span></div>
+            <div class="scale-distance"><span></span><b>149,600,000 km</b></div>
+            <div class="scale-sun"><span>Sun</span></div>
+          </div>
+          <div class="scale-stat-grid">
+            <div><strong>6,371 km</strong><span>Earth's radius</span></div>
+            <div><strong>23,455×</strong><span>Earth–Sun distance ÷ Earth's radius</span></div>
+            <div><strong>Imperceptible</strong><span>Change in the sun's angular size over a day</span></div>
+          </div>
+          <p class="instrument-note">Conclusion: the sun looking a different size at different times of day doesn't, on its own, prove it's closer.</p>
+        </div>
+      </section>
+
+      <section id="rotation" class="layer layer-rotation" aria-labelledby="rotation-title">
+        <div class="section-heading section-heading-light">
+          <p class="eyebrow">Layer two · freeze the orbit</p>
+          <h2 id="rotation-title">As Earth rotates toward the sun, noon gains ground</h2>
+          <p>
+            Assume, for a moment, that Earth stays fixed at one point in its orbit. As an observer turns from the oblique angle of morning to face the sun more directly at local solar noon, they gain a small edge in distance — that's rotation's contribution.
+          </p>
+        </div>
+        <div class="instrument rotation-instrument" data-testid="rotation-model">
+          <div class="rotation-visual">
+            <div class="rotation-legend">
+              <p><span>&Delta;x</span> distance gained</p>
+              <p><span>R</span> Earth's radius</p>
+            </div>
+            <div class="sun-rays"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            <span class="solar-reference"></span>
+            <div class="rotation-earth" id="rotation-earth">
+              <div class="earth-spin" id="earth-spin" aria-hidden="true">
+                <img class="earth-texture" src="./media/earth-asia.png" alt="" />
+              </div>
+              <!--
+                What carries the spin. The viewBox is the globe: 200 units
+                across, so a radius is 100. The line is the observer's 35°N
+                latitude track (x = ±100·cos35, y = -100·sin35) and the ellipse
+                is the near half of the observer's own meridian, pole to pole,
+                which main.ts widens as Earth turns. A full meridian grid used to
+                sit here too and read as clutter, so the spin is now shown by
+                these two plus the drifting texture.
+              -->
+              <svg class="earth-grid" aria-hidden="true" focusable="false" viewBox="-100 -100 200 200">
+                <line class="grid-parallel" x1="-81.92" y1="-57.36" x2="81.92" y2="-57.36"></line>
+                <path class="grid-observer-meridian" id="observer-meridian"></path>
+              </svg>
+              <span class="day-night" aria-hidden="true"></span>
+              <span class="equator"></span>
+              <span class="earth-center"></span>
+              <span class="geometry-line radius-line" id="rotation-radius"></span>
+              <span class="geometry-line distance-line" id="rotation-distance-line"></span>
+              <span class="geometry-label radius-label" id="rotation-radius-label">R</span>
+              <span class="geometry-label distance-label" id="rotation-distance-label">&Delta;x</span>
+              <button class="observer-dot" id="observer-dot" type="button" aria-label="Drag to rotate Earth and change the local solar time" title="Drag to spin Earth">
+                <span aria-hidden="true"></span>
+              </button>
+              <span class="night-label" aria-hidden="true">Night</span>
+              <span class="day-label" aria-hidden="true">Day</span>
+            </div>
+            <span class="sun-direction">Sunlight</span>
+            <p class="drag-hint" aria-hidden="true">Drag left or right to spin Earth</p>
+          </div>
+          <div class="controls-panel">
+            <p class="control-kicker">Rotate Earth</p>
+            <label for="rotation-hour">Local solar time <output id="rotation-hour-output">08:00</output></label>
+            <input id="rotation-hour" type="range" min="6" max="12" step="0.25" value="8" />
+            <div class="range-labels"><span>Near sunrise</span><span>Local solar noon</span></div>
+            <dl class="metric-list">
+              <div><dt>Sun's altitude</dt><dd id="rotation-altitude">--</dd></div>
+              <div><dt>Distance gained toward sun</dt><dd id="rotation-projection">--</dd></div>
+              <div><dt>Compared to noon</dt><dd id="rotation-difference">--</dd></div>
+            </dl>
+            <p class="instrument-note">Drag the globe left or right to turn it on its axis, or use the slider. Earth turns 15° of longitude an hour, so the meridians sweep a quarter turn between 06:00 and noon while the observer slides along the 35°N track — never toward a pole. The date is near the equinox, so the sun rises at 06:00, the moment the observer crosses the dawn line with no distance gained yet.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="orbit" class="layer layer-orbit" aria-labelledby="orbit-title">
+        <div class="section-heading">
+          <p class="eyebrow">Layer three · let Earth move</p>
+          <h2 id="orbit-title">But Earth never stays still</h2>
+          <p>
+            Earth rotates and, at the same time, follows a roughly elliptical orbit. Over the course of a day, the Earth–Sun distance shifts too — sometimes favouring noon, sometimes pulling the advantage back to morning.
+          </p>
+        </div>
+        <div class="instrument orbit-instrument" data-testid="orbit-model">
+          <div class="orbit-visual" role="group" aria-label="Draggable diagram of Earth's orbit">
+            <!--
+              Two arcs rather than one ring, cut at perihelion and aphelion —
+              the right and left ends of the ellipse, where the two markers sit.
+              Those are the turning points, so each arc is one leg of the round
+              trip: Earth runs clockwise here, so the lower arc is January to
+              July and is receding, the upper arc is July to January and is
+              closing. That is the same thing the panel's "Orbital trend" line
+              reports, and each arc takes the colour of the point it is heading
+              for. A bordered div could not cut it here: CSS joins border colours
+              along the box's diagonals, which on this ellipse fell at the top
+              right and bottom left. preserveAspectRatio="none" lets a circle in
+              user units stretch to the ellipse on screen; non-scaling-stroke in
+              the stylesheet keeps the line an even width through that stretch.
+            -->
+            <svg class="orbit-ring" aria-hidden="true" focusable="false" viewBox="-100 -100 200 200" preserveAspectRatio="none">
+              <ellipse class="orbit-ring-inner" cx="0" cy="0" rx="90" ry="90"></ellipse>
+              <path class="orbit-arc orbit-arc-receding" d="M 100 0 A 100 100 0 0 1 -100 0"></path>
+              <path class="orbit-arc orbit-arc-closing" d="M -100 0 A 100 100 0 0 1 100 0"></path>
+            </svg>
+            <span class="orbit-sun" aria-hidden="true"></span>
+            <span class="orbit-distance orbit-distance-aphelion"><b>1.52 × 10<sup>8</sup> km</b></span>
+            <span class="orbit-distance orbit-distance-perihelion"><b>1.471 × 10<sup>8</sup> km</b></span>
+            <span class="orbit-earth orbit-earth-aphelion" aria-hidden="true"><img src="./media/earth-asia.png" alt="" /></span>
+            <span class="orbit-earth orbit-earth-perihelion" aria-hidden="true"><img src="./media/earth-asia.png" alt="" /></span>
+            <span class="aphelion-label"><em>Farthest from the sun</em><strong>Around 4 July</strong><span>Aphelion</span></span>
+            <span class="perihelion-label"><em>Closest to the sun</em><strong>Around 3 January</strong><span>Perihelion</span></span>
+            <button class="orbit-earth orbit-earth-selected" id="orbit-earth" type="button" aria-label="Drag Earth along its orbit" title="Drag Earth"><img src="./media/earth-asia.png" alt="" /></button>
+            <span class="orbit-date-label" id="orbit-date-label" aria-hidden="true">20 March</span>
+          </div>
+          <div class="controls-panel orbit-controls">
+            <p class="control-kicker">Earth's orbit</p>
+            <div class="orbit-current-date"><span>Current date</span><output id="orbit-date-output">2026-03-20</output></div>
+            <dl class="metric-list">
+              <div><dt>Estimated Earth–Sun distance</dt><dd id="orbit-distance">--</dd></div>
+              <div><dt>Vs. annual average</dt><dd id="orbit-average">--</dd></div>
+              <div><dt>Orbital trend</dt><dd id="orbit-trend">--</dd></div>
+            </dl>
+            <p class="instrument-note">This uses a simplified teaching model of the orbit: perihelion around 3 January, aphelion around 4 July.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="verdict" class="verdict-section" aria-labelledby="verdict-title">
+        <div class="section-heading section-heading-light">
+          <p class="eyebrow">Verdict · putting all three layers together</p>
+          <h2 id="verdict-title">Today, who's actually closer to the sun?</h2>
+          <p>Choose a latitude, a date, and a morning hour. The page compares the estimated distance at that moment with local solar noon on the same day.</p>
+        </div>
+        <div class="verdict-workbench" data-testid="distance-model">
+          <form class="verdict-controls" id="comparison-form">
+            <label for="comparison-date">Date</label>
+            <input id="comparison-date" type="date" value="2026-03-20" min="2026-01-01" max="2026-12-31" />
+            <label for="latitude">Latitude <output id="latitude-output">35°N</output></label>
+            <input id="latitude" type="range" min="0" max="60" step="1" value="35" />
+            <label for="morning-hour">Morning hour <output id="morning-hour-output">08:00</output></label>
+            <input id="morning-hour" type="range" min="6" max="11" step="0.25" value="8" />
+            <div class="range-labels"><span>06:00</span><span>11:00</span></div>
+          </form>
+          <div class="verdict-output" aria-live="polite">
+            <p class="verdict-label">Verdict</p>
+            <p class="verdict-main" id="verdict-main">Calculating…</p>
+            <p class="verdict-detail" id="verdict-detail">--</p>
+            <div class="contribution-grid">
+              <div><span>Rotation's share</span><strong id="rotation-contribution">--</strong></div>
+              <div><span>Orbit's share</span><strong id="orbit-contribution">--</strong></div>
+              <div><span>Total</span><strong id="total-contribution">--</strong></div>
+            </div>
+            <p class="model-disclaimer">A teaching model — not a substitute for a proper ephemeris or precise astronomical calculation.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="sources" aria-labelledby="sources-title">
+        <h2 id="sources-title">Sources &amp; method</h2>
+        <p>The average Earth–Sun distance uses 1 AU; perihelion and aphelion use common approximate dates. The interactive model estimates the combined effect of rotation and orbit from the observer's radial projection toward the sun.</p>
+        <ul>
+          <li><a href="https://science.nasa.gov/exoplanets/what-is-an-au/" target="_blank" rel="noreferrer">NASA: What is an Astronomical Unit?</a></li>
+          <li><a href="https://apod.nasa.gov/apod/ap250104.html" target="_blank" rel="noreferrer">NASA APOD: Perihelion Sun 2025</a></li>
+          <li><a href="https://ssd.jpl.nasa.gov/horizons/" target="_blank" rel="noreferrer">NASA JPL: Horizons System</a></li>
+        </ul>
+      </section>
     </main>
+
+    <footer>
+      <p>COMP4020 Assignment 1 · An original interactive science narrative</p>
+    </footer>
     <script type="module" src="./main.ts"></script>
   </body>
 </html>
