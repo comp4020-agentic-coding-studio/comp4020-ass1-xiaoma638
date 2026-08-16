@@ -1,33 +1,9 @@
 # Assignment 1 — reflection
 
-<!-- TODO(you): 150–300 words total, across the two prompts below. Delete every
-     TODO comment and every bracketed prompt before you ship. This is also the
-     entry the week 4 retro reads, so the breakthrough below is what you'll
-     stand up and present — pick the one you can show as a before/after. -->
-
 ## The breakthrough that moved the work forward
 
-<!-- TODO(you): One breakthrough, not a list. Some candidates from this repo —
-     pick the one that's actually true for you, or name a different one:
-
-     - the moment you stopped drawing the globe as a picture and started
-       deriving every drawn part from one angle (SUN_TILT_DEG, spinDegrees),
-       so the rays, the terminator, the meridian and Δx couldn't drift out of
-       agreement with each other or with the kilometres in the panel
-     - realising the page needed the illusion layer *first* — that a reader who
-       hasn't been shown apparent size ≠ distance won't care about the number
-     - the point where you separated the rotation and orbit contributions
-       instead of reporting one net figure, which is what turned a fact into
-       an argument the reader can watch have a tug-of-war
-
-     Say what it changed, not just what it was. What did the page look like
-     before it, and after? -->
+The breakthrough came when I stopped treating the broken mobile Ebbinghaus illusion as a cosmetic problem. At first, moving the dots until they looked right seemed sufficient. However, I found that the mobile width override changed the cluster’s centre without moving its pixel-positioned dots, which broke the geometry behind the illusion. Removing that override and scaling the whole figure together fixed the underlying cause. This changed my approach to the rest of the project: I began looking for shared rules and measurable relationships instead of adjusting individual elements by eye.
 
 ## What this changed about who I want to be as a developer
 
-<!-- TODO(you): The prompt is about *you*, not the artefact — so this is the
-     half that can't be reconstructed from the repo. Something honest about
-     what directing an agent on a 3,700-line prototype taught you. Worth being
-     specific about: where you accepted output you shouldn't have, or where you
-     stopped retrying and changed the standard instead. A concrete regret reads
-     as more developed than a tidy conclusion. -->
+This project taught me that I need to develop better Git habits by committing meaningful stages while I work, rather than saving everything until the end. It also changed how I think about using AI. An agent can produce roughly 80% of a project very quickly, but the remaining work is often the most important and exhausting. Checking whether the output is actually correct, finding responsive-layout problems, refining interactions, and recording the reasons behind fixes still require careful human judgement. I want to become a developer who uses AI efficiently without treating its first plausible result as finished work.
