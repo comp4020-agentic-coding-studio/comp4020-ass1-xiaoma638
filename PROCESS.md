@@ -1,104 +1,30 @@
 # Process overview
 
-<!-- TODO(you): 400–600 words, three or four moments. Delete every TODO comment
-     and every bracketed prompt before you ship — what's left should read as
-     your own prose, with no scaffolding showing.
-
-     Read this before writing: the marks are in two of the four jobs a moment
-     does — "what you did instead of the obvious thing" and "how you knew it
-     was right". The repo can show what changed; it cannot show either of
-     those, which is why they're where the marginal marks sit. And the brief
-     says the strongest moments are the ones where a correction landed in the
-     harness (a rule added to CLAUDE.md, a check wired up, an attempt thrown
-     away) rather than in a retry. -->
-
 ## What I built
 
-<!-- TODO(you): One paragraph — the thing, and the idea behind it. The raw
-     material is here; write it in your own voice rather than editing this in
-     place:
-
-     An answer to the Liezi story 《两小儿辩日》, where two children argue
-     whether the sun is closer at sunrise or at noon and Confucius can't
-     settle it. The page settles it, but only after making the reader distrust
-     their own eyes: an Ebbinghaus figure with a reveal, then two clips of the
-     same sun, then two instruments they drag — the rotation one, where
-     turning toward local noon gains ground on the sun, and the orbit one,
-     where eccentricity pulls the other way — and finally a verdict panel that
-     takes their date, latitude and morning hour and separates the two
-     contributions instead of reporting one net number.
-
-     Say what the *point of view* is. The brief wants one strong idea and
-     nothing else; name yours in a sentence. -->
+This website explores an old Chinese story, *Two Children Debating the Sun*, which asks whether the Sun is closer to us in the morning or at noon. The two children both base their arguments on reasonable observations, but neither can reach the correct conclusion through visual experience alone. The website guides users from the original story into three increasingly detailed levels of explanation, using interactive examples to reveal why intuition can be misleading and how science can answer the question. Its main idea is not only to settle a seemingly impractical debate, but also to celebrate the children’s willingness to notice, question, discuss, and investigate the world around them.
 
 ## The moments that mattered
 
-<!-- TODO(you): Three or four. Each needs all four jobs: what happened, what
-     you did instead of the obvious thing, how you knew it was right, and the
-     citation. Citation format is link text = the hash or range, target = the
-     GitHub commit or compare URL — the two below are wired up and resolve, so
-     copy their shape.
+### 1. Making equality visible
 
-     A candidate worth considering, if it's true for you: the geometry in
-     `updateRotationVisual` derives the rays, the terminator, the observer's
-     meridian and Δx from one angle rather than positioning each by eye. The
-     obvious thing is to nudge each element until the frame looks right; the
-     non-obvious thing is to make them share a source so they *can't*
-     disagree. If that's what happened, the "how you knew" is the spec test
-     asserting the two contributions sum to the reported total, plus what you
-     saw at 390×844.
-
-     Another, if it's true: the label collision at the phone viewport that the
-     comments in `updateRotationVisual` describe — labels pinned to the far end
-     of a stub landing on top of the observer near dawn. Fixing that in pixels
-     rather than percentages is a judgement about *why* it broke, and the check
-     is the 390×844 viewport itself.
-
-     Be honest in these. A moment the history doesn't corroborate scores worse
-     than a smaller moment it does. -->
-
-### 1. <!-- TODO(you): name the moment -->
-
-<!-- TODO(you): what happened / what you did instead / how you knew / cite it -->
+The first “Show that both centres are equal” reveal only outlined the two centre discs. It stated the answer but did not make the comparison easier, because users still had to judge two separate circles inside different surroundings. Instead of making the outlines stronger or adding more explanation, I used two dashed guide lines spanning both clusters and touching the top and bottom of each centre disc. The shared lines make the equal diameters directly visible. I positioned them with `--disc-radius`, calculated from the disc radius and the cluster scale, so the lines remain tangent when the figure is resized. I checked both toggle states and confirmed that the lines stayed aligned with both discs.
 
 Cited: [`6e9c936`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass1-xiaoma638/commit/6e9c936)
 
-### 2. <!-- TODO(you): name the moment -->
+### 2. Turning the scientific claim into a test
 
-<!-- TODO(you): what happened / what you did instead / how you knew / cite it -->
+The starter shipped `spec/starter.test.ts`, and once its placeholder page became this one those tests still passed while asserting nothing about what was actually on screen — green checks that measured nothing. The obvious replacement is to assert that the new page's elements exist, and I did that. But the tests that carry weight assert the argument instead: that the rotation and orbit contributions come out with opposite signs and sum to the total the verdict panel reports. The tug-of-war the whole page is about now fails loudly if a refactor breaks either side of it. I pinned the model to published figures — 147.1 and 152.1 million km at perihelion and aphelion — so the expectations come from outside the code rather than from the code itself.
 
 Cited: [`f4ae7dd`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass1-xiaoma638/commit/f4ae7dd)
 
-### 3. <!-- TODO(you): name the moment -->
+### 3. Fixing the illusion's geometry on phones
 
-<!-- TODO(you): what happened / what you did instead / how you knew / cite it -->
+On phones, the Ebbinghaus experiment looked wrong: a 132px width override moved the cluster's centre from 73px to 66px while its dots kept their pixel positions. The ring radius collapsed from 32px to 22.6–25px, pushing dots about 4px into the centre disc. Instead of nudging the dots until they looked right, I removed the width override and let the existing `scale()` resize the complete geometry. The mirrored `--disc-scale` kept the guide lines tangent. The restored 146px geometry preserved the intended 32px radius and 5.5px gap, and I left a comment at the breakpoint to prevent the same regression.
+
+Cited: [`ae71165`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass1-xiaoma638/commit/ae71165)
 
 ## A note on this history
 
-<!-- TODO(you): READ THIS, THEN DECIDE WHAT TO DO WITH IT.
+The commits here were made on 16 August; the work itself ran across the week but wasn't committed as it went. The moments above cite what's actually in the record.
 
-     Your prototype was written across the week but committed in four commits
-     on 16 August, the day before the deadline. Your CLAUDE.md tells you to
-     "commit meaningful stages, not one final dump", and the assessment page
-     says a trail that grew alongside the code is the strongest evidence and a
-     dump the night before is the weakest. That gap is real and a marker will
-     see it in the timestamps.
-
-     Two honest options, and only these two:
-
-     1. Say so, in one sentence, without excuses — and let the moments above
-        carry the evidence instead. A short, accurate acknowledgement costs
-        less than a marker discovering it themselves.
-     2. Delete this section and say nothing. The timestamps still show it.
-
-     What you must NOT do is write moments that imply an incremental history
-     that isn't there. Uncited claims don't count; contradicted ones are worse
-     — the bottom band is "a record that contradicts" the account.
-
-     Nothing can retroactively create the trail. What you can still control is
-     whether the account of it is truthful. -->
-
----
-
-<!-- Harness carried forward from week 3: 45f22f2 -->
-<!-- https://github.com/comp4020-agentic-coding-studio/comp4020-ass1-xiaoma638/commit/45f22f2 -->
